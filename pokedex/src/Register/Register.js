@@ -1,0 +1,1 @@
+//register new user, username, email and password required
