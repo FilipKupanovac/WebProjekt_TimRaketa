@@ -1,0 +1,21 @@
+#navigation-main{
+    background-color: beige;
+    width: 100%;
+    height: auto;
+}
+
+nav{
+    display: flex;
+    flex-flow: row wrap;
+}
+p{
+    padding: 1em 1.5em;
+}
+
+.flex{
+    display: flex;
+    flex-flow: row wrap;
+}
+.toright{
+    margin-left: auto;
+}
