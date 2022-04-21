@@ -16,7 +16,7 @@ import '../CSS/Navigation.css'
 
 class Navigation extends Component {
 
-    logShit(){
+    logCl(){
         console.log("MARGIN CLICK")
     }
     render(){
@@ -25,8 +25,8 @@ class Navigation extends Component {
             <p>Pokedex</p>
             <p>Map</p>
             <p>Random</p>
-            <p className="toright" onClick={this.logShit}>Signin</p>
-            <p className="toright" onClick={this.logShit}>Register</p>
+            <p className="toright" onClick={this.logCl}>Signin</p>
+            <p className="toright" onClick={this.logCl}>Register</p>
           </nav>
         );
     }
