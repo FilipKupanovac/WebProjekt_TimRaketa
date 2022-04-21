@@ -16,16 +16,19 @@ import '../CSS/Navigation.css'
 
 class Navigation extends Component {
 
+    logShit(){
+        console.log("MARGIN CLICK")
+    }
     render(){
         return (
-            <nav id="navigation-main">
-                <p>Pokedex</p>
-                <p>Map</p>
-                <p>Random</p>
-                <p className="toright">Signin</p>
-                <p className="toright">Register</p>
-            </nav>
-          );
+          <nav id="navigation-main">
+            <p>Pokedex</p>
+            <p>Map</p>
+            <p>Random</p>
+            <p className="toright" onClick={this.logShit}>Signin</p>
+            <p className="toright" onClick={this.logShit}>Register</p>
+          </nav>
+        );
     }
     /**TODO
      * EVERY p ELEMENT NEEDS TO GET PROPER STYLING, ON-HOVER STYLING, ON-CLICK ACTION ...

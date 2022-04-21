@@ -10,9 +10,9 @@ import '../CSS/App.css';
 
 function App() {
   return (
-    <div class="body">
+    <div className="body">
       <Navigation />
-      <iframe title="ASSS" src="https://giphy.com/embed/fSvqyvXn1M3btN8sDh" width="100%" height="500px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <iframe title="ASSS" src="https://giphy.com/embed/fSvqyvXn1M3btN8sDh" width="100%" height="500px" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
 
       <p ><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
     </div>

@@ -19,3 +19,7 @@ p{
 .toright{
     margin-left: auto;
 }
+
+p:hover{
+    background-color: orange;
+}
