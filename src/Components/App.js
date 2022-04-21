@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import '../CSS/App.css';
 
 //TODO
 //change func to class
@@ -8,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <div class="body">
-      <iframe src="https://giphy.com/embed/fSvqyvXn1M3btN8sDh" width="100%" height="500px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <iframe title="ASSS" src="https://giphy.com/embed/fSvqyvXn1M3btN8sDh" width="100%" height="500px" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
       <p ><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
     </div>
