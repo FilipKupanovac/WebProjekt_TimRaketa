@@ -3,6 +3,7 @@ import '../CSS/App.css';
 //TODO
 //change func to class
 //class has to remember user data- login status (logged in or not)-additional renderings according to login status
+//Pokemon-wordle-guess pokemon by type with silhouette provided, like footdle.com for soccer players
 
 function App() {
   return (
