@@ -4,10 +4,6 @@
     height: auto;
 }
 
-nav{
-    display: flex;
-    flex-flow: row wrap;
-}
 p{
     padding: 1em 1.5em;
 }
@@ -20,6 +16,9 @@ p{
     margin-left: auto;
 }
 
-p:hover{
+.nav-par{
+    margin: 0;
+}
+.nav-par:hover{
     background-color: orange;
 }

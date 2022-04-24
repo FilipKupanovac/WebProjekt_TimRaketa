@@ -6,33 +6,45 @@
 //MISC
 import React, {Component} from 'react'
 //COMPONENTS
-
+import SignedProfile from './SignedProfile'
 //CSS
 import '../CSS/Navigation.css'
 
-//TODO
-//change func to class
-//class has to remember user data- login status (logged in or not)-additional renderings according to login status
-
 class Navigation extends Component {
-
-    logCl(){
-        console.log("MARGIN CLICK")
-    }
+    /* OVO JE NEPOTREBNO, JUST FOR EXAMPLE
+    constructor(props){
+      super(props);
+      this.state = {
+        signedIn : false
+      }
+    } */
     render(){
         return (
-          <nav id="navigation-main">
-            <p>Pokedex</p>
-            <p>Map</p>
-            <p>Random</p>
-            <p className="toright" onClick={this.logCl}>Signin</p>
-            <p className="toright" onClick={this.logCl}>Register</p>
+          <nav className="flex" id="navigation-main">
+            <p className="nav-par" 
+              onClick={() => this.props.changeCurrentTab(`pokedex`)}>
+              Pokedex
+            </p>
+            <p className="nav-par" 
+              onClick={() => this.props.changeCurrentTab(`map`)}>
+              Map
+            </p>
+            <p className="nav-par" 
+              onClick={() => this.props.changeCurrentTab(`wtpmon`)}>
+              Who's that POKEMON?
+            </p>
+
+            <SignedProfile 
+              signedIn={this.props.signedIn} 
+              signinClick={this.props.signinClick}
+              changeCurrentTab={this.props.changeCurrentTab}
+            />
           </nav>
         );
     }
     /**TODO
      * EVERY p ELEMENT NEEDS TO GET PROPER STYLING, ON-HOVER STYLING, ON-CLICK ACTION ...
-     * 
+     * PICKED TAB SHOULD HAVE SLIGHTLY DIFFERENT BG-COLOR
      * 
      */
     
