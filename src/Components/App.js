@@ -10,7 +10,8 @@ import '../CSS/App.css';
  * signinClick MUST be changed in a way:
  *  -click opens new View, just as click on pokedex, map or 'WTPmon?'
  *  -after filling form correctly for signin/register to change signedIn status and return user to the homepage, 'Pokedex'
- * 
+ * Pokemon-wordle-guess pokemon by type with silhouette provided, like footdle.com for soccer players
+ *
  * ADVANCED : after clicking log out, state isn't changing, make special function to both change state of signed in and current tab
  * 
  */
