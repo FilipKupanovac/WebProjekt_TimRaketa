@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 //COMPONENTS
 import Navigation from '../Components/Navigation'
+import Pokedex from '../Components/Pokedex'
+import Map from '../Components/Map'
 //CSS
 import '../CSS/App.css';
 
@@ -35,8 +37,8 @@ class App extends Component {
   displayCurrentTab = () => {
     let {currentTab} = this.state;
     switch(currentTab){
-      case `pokedex`: return <h1>POKEDEX TAB</h1>
-      case `map`: return <h1>MAP TAB</h1>
+      case `pokedex`: return <Pokedex />
+      case `map`: return <Map />
       case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
       case `signin`: return <h1>SIGNIN FORM</h1>
       case `register`: return <h1>REGISTER FORM</h1>
@@ -65,3 +67,15 @@ class App extends Component {
 }
 
 export default App;
+
+/**
+ * KAKO JE KREŠO REKAO DA MORAMO NEKE REFERENCE I TO ŠTO SMO TRAŽILI NA INTERNETU
+ * PRILOŽITI KAO RJEŠENJE, TU PIŠI ŠTA SI TRAŽIO PO NETU TIPA STACK OVERFLOW I
+ * TAKVE STRANICE KAKO BI IMALI NA JEDNOM MJESTU SVE
+ * 
+ * "export default was not found"
+ * "react lifecycle hooks"
+ * "js map array elements"
+ * 
+ * 
+ */
