@@ -75,7 +75,7 @@ export default App;
  * 
  * "export default was not found"
  * "react lifecycle hooks"
- * 
+ * "js map array elements"
  * 
  * 
  */
