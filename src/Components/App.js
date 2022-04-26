@@ -67,3 +67,15 @@ class App extends Component {
 }
 
 export default App;
+
+/**
+ * KAKO JE KREŠO REKAO DA MORAMO NEKE REFERENCE I TO ŠTO SMO TRAŽILI NA INTERNETU
+ * PRILOŽITI KAO RJEŠENJE, TU PIŠI ŠTA SI TRAŽIO PO NETU TIPA STACK OVERFLOW I
+ * TAKVE STRANICE KAKO BI IMALI NA JEDNOM MJESTU SVE
+ * 
+ * "export default was not found"
+ * "react lifecycle hooks"
+ * 
+ * 
+ * 
+ */

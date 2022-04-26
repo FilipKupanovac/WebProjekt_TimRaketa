@@ -3,12 +3,30 @@
 
 //MISC
 import React, {Component} from 'react'
-//Components
 
+//IF YOU DO NOT USE 'EXPORT DEFAULT' AT ORIGIN FILE, YOU MUST WRAP CONST INSIDE CURLY BRACKETS
+import {mockPokedex} from '../mockPokedex'
+//Components
+import Card from './Card'
 //CSS
+import '../CSS/Pokedex.css'
 
 class Pokedex extends Component {
+
+    constructor(){
+        super();
+        this.state = {
+            pokedex : [],
+            haveRendered : false
+        }
+    }
+
+    componentDidMount(){
+        this.setState({pokedex: mockPokedex.results})
+    }
+
     render(){
+
         return(
             <>
                 <h1>POKEDEX</h1>
@@ -16,6 +34,12 @@ class Pokedex extends Component {
                 <hr/>
                 {/* MAYBE SCROLL COMPONENT HERE */}
                 {/* CARDS */}
+                <div className="card-container">
+                    {this.state.pokedex.map((poke, i) =>{
+                        //console.log(`no. ${i+1}: ${poke.name} \n`)
+                        return <Card key={i} pokemon={poke}/>
+                    })}
+                </div>
             </>
         )
     }
