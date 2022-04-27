@@ -58,8 +58,9 @@ class Card extends Component {
         onClick={() => {this.logEncounterAreas()}}
       >
         <img alt={ pokemon.name } src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ pokemon.number }.png`} />
-        {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE
-        <img alt={ pokemon.name } src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`} /> */}
+        {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE*/
+        <img className="official-artwork" 
+          alt={ pokemon.name } src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.number}.png`} /> }
         <div>
           <h2>{ pokemon.name }</h2>
           <p>{ pokemon.number }</p>
