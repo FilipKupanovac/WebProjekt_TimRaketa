@@ -2,45 +2,52 @@
 //result: pokemon image, name, evoution tree, possible encounter area, height, weight
 
 //MISC
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 //IF YOU DO NOT USE 'EXPORT DEFAULT' AT ORIGIN FILE, YOU MUST WRAP CONST INSIDE CURLY BRACKETS
-import {mockPokedex} from '../mockPokedex'
+import { mockPokedex } from '../mockPokedex'
 //Components
-import Card from './Card'
+import CardList from './CardList'
+import SearchBox from './SearchBox';
 //CSS
 import '../CSS/Pokedex.css'
+import Scroll from './Scroll';
 
 class Pokedex extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            pokedex : [],
-            haveRendered : false
+            pokedex: [],
+            haveRendered: false,
+            searchfield: ''
         }
     }
 
-    componentDidMount(){
-        this.setState({pokedex: mockPokedex.results})
+    componentDidMount() {
+        this.setState({ pokedex: mockPokedex.results })
     }
 
-    render(){
+    onSearchChange = (event) => {
+        this.setState({ searchfield: event.target.value })
+    }
 
-        return(
-            <>
-                <h1>POKEDEX</h1>
-                <input type='text' placeholder='search pokemon'/>
-                <hr/>
-                {/* MAYBE SCROLL COMPONENT HERE */}
-                {/* CARDS */}
-                <div className="card-container">
-                    {this.state.pokedex.map((poke, i) =>{
-                        //console.log(`no. ${i+1}: ${poke.name} \n`)
-                        return <Card key={i} pokemon={poke}/>
-                    })}
-                </div>
-            </>
+    render() {
+        const { pokedex, searchfield } = this.state;
+        const filtered = pokedex.filter(pokemon => {
+            return pokemon.name.toLowerCase().includes(searchfield.toLowerCase());
+        })
+
+
+        return (
+            <div className='tc'>
+                <h1 className='f1'>Pokemon</h1>
+                <SearchBox searchChange={this.onSearchChange} />
+                <Scroll>
+                    <CardList pokemons={filtered} />
+                </Scroll>
+            </div>
+
         )
     }
 }
