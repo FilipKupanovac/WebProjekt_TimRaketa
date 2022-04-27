@@ -23,7 +23,8 @@ class App extends Component {
     super();
     this.state = {
       signedIn : false,
-      currentTab : 'pokedex' //Will be used in navigation to display specific view 
+      currentTab : 'pokedex', //Will be used in navigation to display specific view 
+      areas : [] //just for example here, could be deleted after
     }
   }
 
@@ -50,8 +51,32 @@ class App extends Component {
     this.setState({currentTab : newTab})
   }
 
+  componentDidMount(){
+
+    //#region FETCHING AREAS
+    //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
+    //idea: use expanded view when pokemon is clicked to show detailed info about it
+    var {areas} = this.state
+    fetch('https://pokeapi.co/api/v2/pokemon/56/encounters')
+      .then(resp => resp.json())
+      .then(resp => {
+        areas = resp.filter(area =>{
+          var foundPearl = false;
+          area.version_details.forEach(element => {
+            if(element.version.name === 'firered')
+              foundPearl = true;
+          });
+          if(foundPearl === true){
+            return area;
+          }
+        })
+        this.setState({areas : areas})
+      })
+      //#endregion
+  }
+
   render(){
-    let {signedIn} = this.state;
+    let {signedIn, areas} = this.state;
     return (
         <div className="body">
           <Navigation 
@@ -61,6 +86,10 @@ class App extends Component {
           />
           {this.displayCurrentTab()}
           <p><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
+
+
+          {console.log(`AREAS IN RENDER:`)}
+          {console.log(areas)}
         </div>
     );
   }
@@ -76,6 +105,6 @@ export default App;
  * "export default was not found"
  * "react lifecycle hooks"
  * "js map array elements"
- * 
+ * "use children as props react"
  * 
  */
