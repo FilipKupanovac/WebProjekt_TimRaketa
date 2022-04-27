@@ -10,7 +10,6 @@ const CardList = ({ pokemons }) => {
             <Card
               key={i}
               pokemon={pokemon}
-              number={i}
             />
           );
         })

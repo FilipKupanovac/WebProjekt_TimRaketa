@@ -23,7 +23,8 @@ class App extends Component {
     super();
     this.state = {
       signedIn : false,
-      currentTab : 'pokedex' //Will be used in navigation to display specific view 
+      currentTab : 'pokedex', //Will be used in navigation to display specific view 
+      areas : [] //just for example here, could be deleted after
     }
   }
 
@@ -76,6 +77,6 @@ export default App;
  * "export default was not found"
  * "react lifecycle hooks"
  * "js map array elements"
- * 
+ * "use children as props react"
  * 
  */

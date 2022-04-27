@@ -9,9 +9,9 @@ import { mockPokedex } from '../mockPokedex'
 //Components
 import CardList from './CardList'
 import SearchBox from './SearchBox';
+import Scroll from './Scroll';
 //CSS
 import '../CSS/Pokedex.css'
-import Scroll from './Scroll';
 
 class Pokedex extends Component {
 
