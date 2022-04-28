@@ -4,10 +4,6 @@
     height: auto;
 }
 
-p{
-    padding: 1em 1.5em;
-}
-
 .flex{
     display: flex;
     flex-flow: row wrap;
@@ -17,6 +13,7 @@ p{
 }
 
 .nav-par{
+    padding: 1em 1.5em;
     margin: 0;
 }
 .nav-par:hover{

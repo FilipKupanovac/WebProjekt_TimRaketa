@@ -47,3 +47,8 @@
 iframe{
   margin-top: 50px;
 }
+
+.flexi{
+  display: flex;
+  flex-flow: row wrap;
+}

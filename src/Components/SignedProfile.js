@@ -8,8 +8,8 @@ const SignedProfile = ({signedIn, signinClick, changeCurrentTab}) => {
         </div> 
         :
         <div className="toright flex">
-            <p className="nav-par" onClick={signinClick}>Signin</p>
-            <p className="nav-par" onClick={signinClick}>Register</p>
+            <p className="nav-par" onClick={() => changeCurrentTab('signin')}>Signin</p>
+            <p className="nav-par" onClick={() => changeCurrentTab('register')}>Register</p>
         </div> 
                 
 }
