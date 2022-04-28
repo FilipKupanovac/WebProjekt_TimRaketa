@@ -42,8 +42,8 @@ class App extends Component {
       case `pokedex`: return <Pokedex />
       case `map`: return <Map />
       case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
-      case `signin`: return <Signin />
-      case `register`: return <Register />
+      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab}/>
+      case `register`: return <Register changeCurrentTab={this.changeCurrentTab}/>
       case `profile`: return <h1>USER PROFILE</h1>
       default : return <h1>odjava</h1>
     }
