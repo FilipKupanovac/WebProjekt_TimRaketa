@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Navigation from '../Components/Navigation'
 import Pokedex from '../Components/Pokedex'
 import Map from '../Components/Map'
+import Signin from './SignIn'
+import Register from './Register'
 //CSS
 import '../CSS/App.css';
 
@@ -23,8 +25,7 @@ class App extends Component {
     super();
     this.state = {
       signedIn : false,
-      currentTab : 'pokedex', //Will be used in navigation to display specific view 
-      areas : [] //just for example here, could be deleted after
+      currentTab : 'pokedex'
     }
   }
 
@@ -41,8 +42,8 @@ class App extends Component {
       case `pokedex`: return <Pokedex />
       case `map`: return <Map />
       case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
-      case `signin`: return <h1>SIGNIN FORM</h1>
-      case `register`: return <h1>REGISTER FORM</h1>
+      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab}/>
+      case `register`: return <Register changeCurrentTab={this.changeCurrentTab}/>
       case `profile`: return <h1>USER PROFILE</h1>
       default : return <h1>odjava</h1>
     }
