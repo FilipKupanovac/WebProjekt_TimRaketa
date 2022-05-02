@@ -18,13 +18,13 @@ class Register extends Component{
         return(
             <div className="tc">
                 <h1>Register</h1>
-                <div className="flexi">
+                <div className="flexi justify-center form-w">
                     <p>Email</p>
                     <input type="email" placeholder="enter your email"
                     onChange={(event) => {this.onInputChange(`email`, event)}}
                     ></input>
                 </div>
-                <div className="flexi">
+                <div className="flexi justify-center form-w">
                     <p>Username</p>
                     <input type="text" placeholder="enter your username"
                     onChange={(event) => {this.onInputChange(`username`, event)}}

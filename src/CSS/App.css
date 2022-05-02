@@ -60,3 +60,8 @@ p.linker{
   margin-block-end: 0;
   margin-block-start: 0;
 }
+
+.form-w {
+  width: min(400px, 50%);
+  margin: 0 auto;
+}
