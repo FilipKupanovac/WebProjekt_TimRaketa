@@ -17,13 +17,13 @@ class Signin extends Component {
         return(
             <div className="tc">
                 <h1>Sign in</h1>
-                <div className="flexi justify-center form-w">
+                <div className="flexi form-w space-between">
                     <p>Username</p>
                     <input type="text" placeholder="enter your username or email"
                     onChange={(event) => {this.onInputChange(`credentials`, event)}}
                     ></input>
                 </div>
-                <div className="flexi justify-center form-w">
+                <div className="flexi form-w space-between">
                     <p>Password</p>
                     <input type="password" placeholder="enter your password"
                     onChange={(event) => {this.onInputChange(`password`, event)}}

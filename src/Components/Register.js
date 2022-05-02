@@ -18,19 +18,19 @@ class Register extends Component{
         return(
             <div className="tc">
                 <h1>Register</h1>
-                <div className="flexi justify-center form-w">
+                <div className="flexi form-w space-between">
                     <p>Email</p>
                     <input type="email" placeholder="enter your email"
                     onChange={(event) => {this.onInputChange(`email`, event)}}
                     ></input>
                 </div>
-                <div className="flexi justify-center form-w">
+                <div className="flexi form-w space-between">
                     <p>Username</p>
                     <input type="text" placeholder="enter your username"
                     onChange={(event) => {this.onInputChange(`username`, event)}}
                     ></input>
                 </div>
-                <div className="flexi">
+                <div className="flexi form-w space-between">
                     <p>Password</p>
                     <input type="password" placeholder="enter your password"
                     onChange={(event) => {this.onInputChange(`password`, event)}}

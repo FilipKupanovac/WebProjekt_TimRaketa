@@ -42,10 +42,16 @@
   height:max-content;
   margin: 0 auto;
   justify-content: center;
+  min-width: 400px;
 }
 
 iframe{
   margin-top: 50px;
+}
+
+input{
+  width: 200px;
+  min-width: 200px;
 }
 
 .flexi{
@@ -64,4 +70,8 @@ p.linker{
 .form-w {
   width: min(400px, 50%);
   margin: 0 auto;
+}
+
+.space-between {
+  justify-content: space-between;
 }
