@@ -5,6 +5,13 @@ import React, {Component} from 'react'
 //CSS
 
 class Signin extends Component {
+    constructor(){
+        super();
+        this.state = {
+            credentials : '',
+            password : ''
+        }
+    }
     render(){
         let {changeCurrentTab} = this.props;
         return(
@@ -12,13 +19,19 @@ class Signin extends Component {
                 <h1>Sign in</h1>
                 <div className="flexi">
                     <p>Username</p>
-                    <input type="text" placeholder="enter your username or email"></input>
+                    <input type="text" placeholder="enter your username or email"
+                    onChange={(event) => {this.onInputChange(`credentials`, event)}}
+                    ></input>
                 </div>
                 <div className="flexi">
                     <p>Password</p>
-                    <input type="password" placeholder="enter your password"></input>
+                    <input type="password" placeholder="enter your password"
+                    onChange={(event) => {this.onInputChange(`password`, event)}}
+                    ></input>
                 </div>
-                <button>Sign in</button>
+                <button
+                    onClick={()=> this.trySignin()}
+                >Sign in</button>
                 <p className="flexi">New trainer?
                     <p className="linker"
                         onClick={() => changeCurrentTab('register')}
@@ -26,6 +39,20 @@ class Signin extends Component {
                 </p>
             </div>
         )
+    }
+
+    trySignin = () => {
+        //for mock signin only requirements are credentials length > 5 and password = `pokedex`
+        let {credentials,password} = this.state;
+        if(credentials.length > 5 && password === 'pokedex'){
+            this.props.loginUser(credentials);
+            this.props.changeCurrentTab('pokedex')
+        }
+    }
+
+    onInputChange = (key, event) => {
+        console.log(`SET ${key} as: ${event.target.value}`)
+        this.setState({[key] : event.target.value})
     }
 }
     

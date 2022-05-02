@@ -36,8 +36,9 @@ class Navigation extends Component {
 
             <SignedProfile 
               signedIn={this.props.signedIn} 
-              signinClick={this.props.signinClick}
               changeCurrentTab={this.props.changeCurrentTab}
+              username={this.props.username}
+              logout={this.props.logout}
             />
           </nav>
         );
