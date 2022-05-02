@@ -6,6 +6,7 @@ import Pokedex from '../Components/Pokedex'
 import Map from '../Components/Map'
 import Signin from './SignIn'
 import Register from './Register'
+import UserProfile from './UserProfile';
 //CSS
 import '../CSS/App.css';
 
@@ -25,41 +26,47 @@ class App extends Component {
     super();
     this.state = {
       signedIn : false,
-      currentTab : 'pokedex'
+      currentTab : 'pokedex',
+      username: undefined
+    }
+  }
+
+  //METHODS LIKE THIS ONE CAN NOT CHANGE STATE OF COMPONENT FOR SAFETY REASONS BECAUSE THEY ARE RUN INSIDE RENDER METHOD -> WOULD LEAD TO AN INFINITE LOOP - react throws error itself, this is just a notice
+  displayCurrentTab = () => {
+    let {currentTab, username} = this.state;
+    switch(currentTab){
+      case `pokedex`: return <Pokedex />
+      case `map`: return <Map />
+      case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
+      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
+      case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
+      case `profile`: return <UserProfile username={username}/>
+      default : return <h1>odjava</h1>
     }
   }
 
   //OBAVEZNO OVAKVA DEFINICIJA VLASTITE FUNKCIJE KAKO BI RADILO
   //PRIPAZI KOD SETSTATE METODE, ima 2 para zagrada, ( { key : value } )
-  signinClick = () => {
-    this.setState({signedIn : !this.state.signedIn})
-  }
-
-  //METHODS LIKE THIS ONE CAN NOT CHANGE STATE OF COMPONENT FOR SAFETY REASONS BECAUSE THEY ARE RUN INSIDE RENDER METHOD -> WOULD LEAD TO AN INFINITE LOOP - react throws error itself, this is just a notice
-  displayCurrentTab = () => {
-    let {currentTab} = this.state;
-    switch(currentTab){
-      case `pokedex`: return <Pokedex />
-      case `map`: return <Map />
-      case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
-      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab}/>
-      case `register`: return <Register changeCurrentTab={this.changeCurrentTab}/>
-      case `profile`: return <h1>USER PROFILE</h1>
-      default : return <h1>odjava</h1>
-    }
-  }
   changeCurrentTab = (newTab) => {
     this.setState({currentTab : newTab})
   }
+  loginUser = (_username) => {
+    this.setState({username : _username, signedIn : true})
+  }
+  logout = () => {
+    //MAYBE ADD PROMPT WITH ADDITIONAL CONFIRM BOX
+    this.setState({username: undefined, signedIn: false, currentTab : 'pokedex'})
+  }
 
   render(){
-    let {signedIn} = this.state;
+    let {signedIn,username} = this.state;
     return (
         <div className="body">
           <Navigation 
             signedIn={signedIn} 
-            signinClick={this.signinClick}
             changeCurrentTab={this.changeCurrentTab}
+            username={username}
+            logout = {this.logout}
           />
           {this.displayCurrentTab()}
           <p><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
@@ -79,5 +86,8 @@ export default App;
  * "react lifecycle hooks"
  * "js map array elements"
  * "use children as props react"
+ * https://stackoverflow.com/questions/51282464/using-a-dynamic-key-to-setstate-in-react
+ * https://stackoverflow.com/questions/44596025/unexpected-use-of-event-no-restricted-globals-when-using-event-target-id-to-ge
+ * https://reactjs.org/docs/handling-events.html
  * 
  */
