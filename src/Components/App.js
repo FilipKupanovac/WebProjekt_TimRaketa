@@ -7,6 +7,7 @@ import Map from '../Components/Map'
 import Signin from './SignIn'
 import Register from './Register'
 import UserProfile from './UserProfile';
+import WTPmon from './Wtpmon';
 //CSS
 import '../CSS/App.css';
 
@@ -37,7 +38,7 @@ class App extends Component {
     switch(currentTab){
       case `pokedex`: return <Pokedex />
       case `map`: return <Map />
-      case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
+      case `wtpmon`: return <WTPmon />
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
       case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
       case `profile`: return <UserProfile username={username}/>

@@ -9,12 +9,8 @@ import '../CSS/Card.css'
  * 
  * ADD STYLING TO THE CARD IN CARD.CSS FILE
  * 
- * MAKE THIS COMPONENT A CLASS AND ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
+ * ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
  */
-
-/* const Card = ({ pokemon }) => {
-    
-} */
 
 class Card extends Component {
 
