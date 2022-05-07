@@ -1,4 +1,4 @@
-.guess{
+.guess {
     width: 300px;
     height: 2em;
     line-height: 2em;
@@ -7,7 +7,11 @@
     padding: auto auto;
 }
 
-.wtpmon{
+.wtpmon {
     width: min(200px, 70%);
     height: auto;
+}
+
+.pokemon-image {
+    filter: brightness(0);
 }

@@ -1,7 +1,7 @@
 //MISC
 import React, { Component } from 'react';
 //COMPONENTS
-import {mockPokedex} from '../mockPokedex'
+import { mockPokedex } from '../mockPokedex'
 //CSS
 import '../CSS/Wtpmon.css'
 
@@ -17,41 +17,41 @@ import '../CSS/Wtpmon.css'
  * *WILD IDEA: find some confetti burst animation and add it on correct guess
  */
 class WTPmon extends Component {
-    constructor(){
+    constructor() {
         super();
-        this.state={
+        this.state = {
             currentPokemon: undefined,
             correctGuess: true,
             tries: 0,
         }
     }
-    componentDidMount(){
-        let {correctGuess} = this.state;
-        if(correctGuess === true){
+    componentDidMount() {
+        let { correctGuess } = this.state;
+        if (correctGuess === true) {
             var newPokemon = this.getRandomPokemonIndex();
-            console.log(`new pokemon index is: ${newPokemon}, getting pokemon number ${newPokemon+1}`)
-            this.setState({currentPokemon : mockPokedex.results[newPokemon], correctGuess: false});
+            console.log(`new pokemon index is: ${newPokemon}, getting pokemon number ${newPokemon + 1}`)
+            this.setState({ currentPokemon: mockPokedex.results[newPokemon], correctGuess: false });
         }
     }
-    render(){
-        let {currentPokemon} = this.state;
+    render() {
+        let { currentPokemon } = this.state;
 
-        return(
+        return (
             <>
-            <h1>WHO'S THAT POKEMON?</h1>
-            <h1>POGODI OVOG </h1>
-            {
-                currentPokemon !== undefined 
-                ? <img className="wtpmon"
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.number}.png`} alt="nema sliku"/>
-                : <></>
-            }
-            <p className="guess">samo za primjer pokušaja</p>
-            <p className="guess"> </p>
-            <p className="guess"></p>
-            <p className="guess"></p>
-            <p className="guess"></p>
-            <input type="text"/>
+                <h1>WHO'S THAT POKEMON?</h1>
+                <h1>POGODI OVOG </h1>
+                {
+                    currentPokemon !== undefined
+                        ? <img className="wtpmon pokemon-image"
+                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.number}.png`} alt="nema sliku" />
+                        : <></>
+                }
+                <p className="guess">samo za primjer pokušaja</p>
+                <p className="guess"> </p>
+                <p className="guess"></p>
+                <p className="guess"></p>
+                <p className="guess"></p>
+                <input type="text" />
             </>
         )
     }
