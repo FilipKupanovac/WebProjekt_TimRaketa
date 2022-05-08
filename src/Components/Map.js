@@ -6,13 +6,19 @@ import React, {Component} from 'react'
 //Components
 
 //CSS
+import '../CSS/Map.css'
 
 class Map extends Component {
     render(){
         return(
             <>
                 <h1>Map</h1>
-                <img src='mapa' alt='ubaci mapu kanto regije'/>
+                <div id="map-holder">
+                    <img id="map"
+                        src="https://i.imgur.com/y5U6bmY.jpg" alt='ubaci mapu kanto regije'/>
+                    <span className="map-area"></span>
+                </div>
+
                 <hr/>
             </>
         )
