@@ -1,0 +1,119 @@
+#kanto-route-1-area{
+    grid-area: 9 / 3 / 11 / 3;
+}
+#kanto-route-2-area{
+    grid-area: 5 / 3 / 8 / 3;
+}
+#kanto-route-3-area{
+    grid-area: 4 / 4 / 5 / 8;
+}
+#kanto-route-4-area{
+    grid-area: 3 / 7 / 4 / 13;
+}
+#kanto-route-5-area{
+    grid-area: 4 / 13 / 6 / 14;
+}
+#kanto-route-6-area{
+    grid-area: 7 / 13 / 9 / 14;
+}
+#kanto-route-7-area{
+    grid-area: 6 / 11 / 7 / 13;
+}
+#kanto-route-8-area{
+    grid-area: 6 / 14 / 7 / 17;
+}
+#kanto-route-9-area{
+    grid-area: 3 / 14 / 4 / 17;
+}
+#kanto-route-10-area{
+    grid-area: 3 / 17 / 6 / 17;
+}
+#kanto-route-11-area{
+    grid-area: 9 / 14 / 10 / 17;
+}
+#kanto-route-12-area{
+    grid-area: 7 / 17 / 12 / 17;
+}
+#kanto-route-13-area{
+    grid-area: 11 / 15 / 12 / 17;
+}
+#kanto-route-14-area{
+    grid-area: 11 / 14 / 13 / 15;
+}
+#kanto-route-15-area{
+    grid-area: 12 / 12 / 13 /14;
+}
+#kanto-route-16-area{
+    grid-area: 6 / 6 / 7 / 10;
+}
+#kanto-route-17-area{
+    grid-area: 7 / 6 / 12 / 7;
+}
+#kanto-route-18-area{
+    grid-area: 12 / 6 / 13 / 11;
+}
+#kanto-sea-route-19-area{
+    grid-area: 13 / 11 / 15 / 12;
+}
+#kanto-sea-route-20-area{
+    grid-area: 14 / 4 / 14 / 11;
+}
+#kanto-sea-route-21-area{
+    grid-area: 12 / 3 / 14 / 4;
+}
+#kanto-route-22-area{
+    grid-area: 8 / 1 / 9 / 3;
+}
+#kanto-route-23-area{
+    grid-area: 4 / 1 / 8 / 2;
+}
+#kanto-route-24-area{
+    grid-area: 1 / 13 / 3;
+}
+#kanto-route-25-area{
+    grid-area: 1 / 14 / 2 / 16;
+}
+#celadon-city{
+    grid-area: 6 / 10;
+}
+#cerulean-city{
+    grid-area: 3 / 13;
+}
+#cinnabar-island{
+    grid-area: 14 / 3;
+}
+
+#fuchsia-city{
+    grid-area: 12 / 11;
+}
+
+#pallet-town{
+    grid-area: 11 / 3;
+}
+
+
+
+#vermilion-city{
+    grid-area: 9 / 13;
+}
+#viridian-city{
+    grid-area: 8 / 3;
+}
+
+
+
+
+
+#pewter-city{
+    grid-area: 4 / 3;
+}
+#lavender-town{
+    grid-area: 6 / 17;
+}
+#indigo-plateau{
+    grid-area: 3 / 1;
+}
+#saffron-city{
+    grid-area: 6 / 13;
+}
+
