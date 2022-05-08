@@ -3,10 +3,12 @@
 
 //MISC
 import React, {Component} from 'react'
+import {kantoAreas} from '../kantoAreaNames'
 //Components
 
 //CSS
 import '../CSS/Map.css'
+import '../CSS/kanto_grid_areas.css'
 
 class Map extends Component {
     render(){
@@ -14,11 +16,22 @@ class Map extends Component {
             <>
                 <h1>Map</h1>
                 <div id="map-holder">
-                    <img id="map"
-                        src="https://i.imgur.com/y5U6bmY.jpg" alt='ubaci mapu kanto regije'/>
-                    <span className="map-area"></span>
-                </div>
+                <div id="position-container">
+                    <div id="filler"></div>
 
+        <div id="grid-container">
+            {
+                kantoAreas.areas.map(
+                    (area, i) => {
+                        return(
+                            <div key={i} id={`${area.name}`} className="map-area"></div>
+                    )}
+                )
+            }
+        </div>
+
+                </div>
+                </div>
                 <hr/>
             </>
         )

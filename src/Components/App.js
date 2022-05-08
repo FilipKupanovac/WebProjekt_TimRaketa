@@ -90,5 +90,7 @@ export default App;
  * https://stackoverflow.com/questions/51282464/using-a-dynamic-key-to-setstate-in-react
  * https://stackoverflow.com/questions/44596025/unexpected-use-of-event-no-restricted-globals-when-using-event-target-id-to-ge
  * https://reactjs.org/docs/handling-events.html
+ * https://css-tricks.com/almanac/properties/a/aspect-ratio/
+ * https://css-tricks.com/snippets/css/complete-guide-grid/
  * 
  */
