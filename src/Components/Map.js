@@ -14,9 +14,9 @@ class Map extends Component {
             <>
                 <h1>Map</h1>
                 <div id="map-holder">
-                    <img id="map"
-                        src="https://i.imgur.com/y5U6bmY.jpg" alt='ubaci mapu kanto regije'/>
-                    <span className="map-area"></span>
+                    {/* <img id="map"
+                        src="https://i.imgur.com/y5U6bmY.jpg" alt='ubaci mapu kanto regije'/> */}
+                    <div className="map-area"></div>
                 </div>
 
                 <hr/>

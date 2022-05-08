@@ -1,22 +1,15 @@
-span.map-area{
-    z-index: 1;
-    width: 20px;
-    height: 20px;
-    opacity: 0.5;
-    background-color: lightgreen;
-    position: relative;
-    left: 0;
-    top: 0;
-    border: 2px solid black;
-}
-
-span.map-area:hover{
-    opacity: 1;
-}
-
-#map{
-    z-index: 0;
-}
 #map-holder{
-    overflow: hidden;
+    background-image: url("https://i.imgur.com/y5U6bmY.jpg");
+    width: 100%;
+    aspect-ratio: 1.53 / 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.map-area{
+    width: 6%;
+    aspect-ratio: 1/1;
+    z-index: 1;
+    background-color: lightgreen;
+    border: 2px solid black;
 }
