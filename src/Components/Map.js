@@ -5,7 +5,7 @@
 import React, {Component} from 'react'
 import {kantoAreas} from '../kantoAreaNames'
 //Components
-
+import MapArea from './MapArea'
 //CSS
 import '../CSS/Map.css'
 import '../CSS/kanto_grid_areas.css'
@@ -24,7 +24,7 @@ class Map extends Component {
                 kantoAreas.areas.map(
                     (area, i) => {
                         return(
-                            <div key={i} id={`${area.name}`} className="map-area"></div>
+                            <MapArea i={i} area={area} key={i}/>
                     )}
                 )
             }

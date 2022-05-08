@@ -22,7 +22,15 @@ export const kantoAreas = {
         {"name": "kanto-sea-route-20-area"},
         {"name": "kanto-sea-route-21-area"},
         {"name": "kanto-route-22-area"},
-        {"name": "kanto-route-23-area"},
+        {
+            "name": "kanto-route-23-area",
+            "grid-template-columns": "33% 30.5% 36.5%",
+            "grid-template-rows": "",
+            "subareas": [{
+                "name": "kanto-victory-road-1",
+                "grid-area" : {"row": "2", "col" : "2"}
+            }]
+        },
         {"name": "kanto-route-24-area"},
         {"name": "kanto-route-25-area"},
         {"name": "celadon-city"},
