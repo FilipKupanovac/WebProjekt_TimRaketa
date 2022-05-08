@@ -1,0 +1,22 @@
+span.map-area{
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    background-color: lightgreen;
+    position: relative;
+    left: 0;
+    top: 0;
+    border: 2px solid black;
+}
+
+span.map-area:hover{
+    opacity: 1;
+}
+
+#map{
+    z-index: 0;
+}
+#map-holder{
+    overflow: hidden;
+}
