@@ -60,7 +60,7 @@ class WTPmon extends Component {
                     <h1>WHO'S THAT POKEMON?</h1>
                     {correctGuess ? <div class="animate three">
                         <span>C</span><span>o</span><span>n</span><span>g</span><span>r</span><span>a</span><span>t</span><span>u</span><span>l</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span><span>!</span>
-                    </div> : <></>}
+                    </div> : guesses.length === 5 ? <p>Better luck next time!</p> : <></>}
                     {
                         currentPokemon !== undefined
                             ? <img
@@ -82,12 +82,17 @@ class WTPmon extends Component {
                         }
                     </div>
 
-
-                    <p className="guess">{guesses.at(0)}</p>
-                    <p className="guess">{guesses.at(1)}</p>
-                    <p className="guess">{guesses.at(2)}</p>
-                    <p className="guess">{guesses.at(3)}</p>
-                    <p className="guess">{guesses.at(4)}</p>
+                    <div>{
+                        currentPokemon !== undefined
+                            ? <div>
+                                <p className={guesses.at(0) === undefined ? "guess" : guesses.at(0) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(0)}</p>
+                                <p className={guesses.at(1) === undefined ? "guess" : guesses.at(1) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(1)}</p>
+                                <p className={guesses.at(2) === undefined ? "guess" : guesses.at(2) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(2)}</p>
+                                <p className={guesses.at(3) === undefined ? "guess" : guesses.at(3) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(3)}</p>
+                                <p className={guesses.at(4) === undefined ? "guess" : guesses.at(4) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(4)}</p>
+                            </div>
+                            : <></>}
+                    </div>
 
                     <form
                         onSubmit={this.handleSubmit} id="inputForm"
@@ -127,7 +132,6 @@ class WTPmon extends Component {
                 }
             }
         }
-
     }
 
     checkForCorrectAnswer = () => {
@@ -138,12 +142,9 @@ class WTPmon extends Component {
     }
 
     handleGameOver = (isCorrect) => {
-        let { currentPokemon } = this.state
         this.disableInput()
         if (isCorrect) {
             this.setState({ correctGuess: true })
-        } else {
-            alert(`Incorrect. The answer is ${this.capitalizeFirstLetter(currentPokemon.name)}.`);
         }
     }
 
