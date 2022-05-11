@@ -7,9 +7,8 @@ import React from 'react';
 const MapArea = ({i, area}) => {
     //this notation for area["grid-template-columns"] is SAME as area.grid-template-columns? in Kotlin
     if(area["subareas"] !== undefined){
-        console.log(area.name + "\n" + area["subareas"])
         return(
-            <div key={i} id={`${area.name}`} className="map-area grid subarea-23"
+            <div key={i} id={`${area.name}`} className="map-area"
                 
             >
                 {/* POSITION ALL DIVS WITH CORRECT GRID-AREA VALUES */}
