@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.e3e8df30.css",
-    "main.js": "/static/js/main.d70d9582.js",
-    "static/js/787.7e0b23c5.chunk.js": "/static/js/787.7e0b23c5.chunk.js",
-    "index.html": "/index.html",
-    "main.e3e8df30.css.map": "/static/css/main.e3e8df30.css.map",
-    "main.d70d9582.js.map": "/static/js/main.d70d9582.js.map",
-    "787.7e0b23c5.chunk.js.map": "/static/js/787.7e0b23c5.chunk.js.map"
+    "main.css": "/WebProjekt_TimRaketa/static/css/main.e3e8df30.css",
+    "main.js": "/WebProjekt_TimRaketa/static/js/main.f90b6882.js",
+    "static/js/787.7e0b23c5.chunk.js": "/WebProjekt_TimRaketa/static/js/787.7e0b23c5.chunk.js",
+    "index.html": "/WebProjekt_TimRaketa/index.html",
+    "main.e3e8df30.css.map": "/WebProjekt_TimRaketa/static/css/main.e3e8df30.css.map",
+    "main.f90b6882.js.map": "/WebProjekt_TimRaketa/static/js/main.f90b6882.js.map",
+    "787.7e0b23c5.chunk.js.map": "/WebProjekt_TimRaketa/static/js/787.7e0b23c5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3e8df30.css",
-    "static/js/main.d70d9582.js"
+    "static/js/main.f90b6882.js"
   ]
 }
