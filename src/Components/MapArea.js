@@ -4,27 +4,54 @@ import React from 'react';
 
 //CSS
 
-const MapArea = ({i, area}) => {
-    //this notation for area["grid-template-columns"] is SAME as area.grid-template-columns? in Kotlin
-    if(area["subareas"] !== undefined){
-        console.log(area.name + "\n" + area["subareas"])
+const MapArea = ({i, area, setLocationOnHover, getAreaInfo}) => {
+    //this notation for area["subareas"] checks if there is key "subareas" in area (line 21)
         return(
-            <div key={i} id={`${area.name}`} className="map-area grid subarea-23"
-                
-            >
-                {/* POSITION ALL DIVS WITH CORRECT GRID-AREA VALUES */}
-                {area.subareas.map((area,i)=>{
-                    return(
-                        <div key={i} id={`${area.name}`} className="map-area"></div>
-                    )
-                })
+            <div key={i} id={`${area.name}`} className="map-area"
+                onMouseEnter={() => {
+                    setLocationOnHover(area.location); 
+                    }
                 }
+                onMouseLeave={() => {
+                    setLocationOnHover(undefined); 
+                    }
+                }
+                onClick={() => {
+                    getAreaInfo()
+                }}
+            >
+            {
+                area["subareas"] !== undefined //LINE 21
+
+                ?   <>
+                    {area.subareas.map((subarea,i)=>{
+                        return(
+                            <div key={i} id={`${subarea.name}`} className="map-area"
+                                onMouseEnter={() => {
+                                    setLocationOnHover(subarea.location); 
+                                    }
+                                }
+                                onMouseLeave={() => {
+                                    setLocationOnHover(area.location); 
+                                    }
+                                }
+                                onClick={() => {
+                                    getAreaInfo()
+                                }}
+                            >
+                                {subarea["in-town"] !== undefined
+                                ? <div className="in-town"></div> 
+                                : <></>}
+                            </div>
+                        )
+                    })
+                    }
+                    </>
+
+                :   <></>
+            }   
             </div>
         )
-    }
-    return(
-        <div key={i} id={`${area.name}`} className="map-area"></div>
-    )
 }
 
 export default MapArea;
