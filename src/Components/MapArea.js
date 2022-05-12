@@ -9,7 +9,7 @@ const MapArea = ({i, area, setLocationOnHover, getAreaInfo}) => {
         return(
             <div key={i} id={`${area.name}`} className="map-area"
                 onMouseEnter={() => {
-                    setLocationOnHover(area.name); 
+                    setLocationOnHover(area.location); 
                     }
                 }
                 onMouseLeave={() => {
@@ -28,11 +28,11 @@ const MapArea = ({i, area, setLocationOnHover, getAreaInfo}) => {
                         return(
                             <div key={i} id={`${subarea.name}`} className="map-area"
                                 onMouseEnter={() => {
-                                    setLocationOnHover(subarea.name); 
+                                    setLocationOnHover(subarea.location); 
                                     }
                                 }
                                 onMouseLeave={() => {
-                                    setLocationOnHover(area.name); 
+                                    setLocationOnHover(area.location); 
                                     }
                                 }
                                 onClick={() => {
