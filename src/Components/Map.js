@@ -35,7 +35,10 @@ class Map extends Component {
                 kantoAreas.areas.map(
                     (area, i) => {
                         return(
-                            <MapArea i={i} area={area} key={i}/>
+                            <MapArea i={i} area={area} key={i}
+                                setLocationOnHover={this.setLocationOnHover}
+                                getAreaInfo={this.getAreaInfo}
+                            />
                     )}
                 )
             }
@@ -46,6 +49,14 @@ class Map extends Component {
                 <hr/>
             </>
         )
+    }
+
+    setLocationOnHover = (areaName) => {
+        this.setState({selectedArea : areaName})
+    }
+
+    getAreaInfo = () => {
+        console.log("API FETCH CALL");
     }
 }
 
