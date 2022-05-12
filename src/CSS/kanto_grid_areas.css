@@ -96,9 +96,15 @@
 }
 #cerulean-city{
     grid-area: 3 / 13;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
 }
 #cinnabar-island{
     grid-area: 14 / 3;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
 }
 #digletts-cave{
     grid-area: 2 / 2;
@@ -108,6 +114,9 @@
 }
 #fuchsia-city{
     grid-area: 12 / 11;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
 }
 #mt-moon{
     grid-area: 2 / 2;
@@ -121,7 +130,9 @@
 #seafoam-islands{
     grid-area: 2 / 2;
 }
-
+#cerulean-cave{
+    grid-area: 1 / 2;
+}
 #vermilion-city{
     grid-area: 9 / 13;
 }
@@ -134,24 +145,29 @@
 #power-plant{
     grid-area: 4 / 2;
 }
-
-
-
+#pokemon-tower{
+    grid-area: 1 / 2;
+}
+#pokemon-mansion{
+    grid-area: 1 / 2;
+}
+#kanto-safari-zone{
+    grid-area: 1 / 2;
+}
 #pewter-city{
     grid-area: 4 / 3;
 }
 #lavender-town{
     grid-area: 6 / 17;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
 }
 #indigo-plateau{
     grid-area: 3 / 1;
 }
 #saffron-city{
     grid-area: 6 / 13;
-}
-
-.subarea-23{
-    
 }
 #kanto-victory-road-1{
     grid-area: 2 / 2;

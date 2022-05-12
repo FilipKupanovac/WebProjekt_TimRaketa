@@ -8,7 +8,7 @@
 #position-container{
     width: 89.7%;
     aspect-ratio: 1.53/1;
-    margin-left: 4.7%;
+    margin-left: 4.8%;
     
 }
 #filler{
@@ -26,6 +26,10 @@
 .grid{
     display: grid;
 }
+#area-name{
+    margin: 0 0;
+    grid-area: 1 / 1 / 3 / 7;
+}
 .map-area{
     background-color: lightcoral;
     opacity: 0.5;
@@ -33,4 +37,12 @@
 .map-area:hover{
     opacity: 0.1;
     cursor: pointer;
+}
+.in-town{
+    margin: auto auto;
+    width: 70%;
+    height: 70%;
+    opacity: 1;
+    background: rgba(0,0,0,1);
+    border-radius: 25%;
 }

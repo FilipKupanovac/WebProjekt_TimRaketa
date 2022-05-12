@@ -1,6 +1,7 @@
 //Misc
 import React from 'react';
 //Components
+import InTownArea from './InTownArea';
 
 //CSS
 
@@ -11,10 +12,12 @@ const MapArea = ({i, area}) => {
             <div key={i} id={`${area.name}`} className="map-area"
                 
             >
-                {/* POSITION ALL DIVS WITH CORRECT GRID-AREA VALUES */}
                 {area.subareas.map((area,i)=>{
                     return(
-                        <div key={i} id={`${area.name}`} className="map-area"></div>
+                        <div key={i} id={`${area.name}`} className="map-area">
+                            {area["in-town"] !== undefined
+                            ? <InTownArea/> : <></>}
+                        </div>
                     )
                 })
                 }

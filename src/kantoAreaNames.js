@@ -66,24 +66,47 @@ export const kantoAreas = {
         {"name": "kanto-route-24-area"},
         {"name": "kanto-route-25-area"},
         {"name": "celadon-city"},
-        {"name": "cerulean-city"},
-        {"name": "cinnabar-island"},
+        {
+            "name": "cerulean-city",
+            "subareas": [{
+                "name": "cerulean-cave",
+                "in-town": "yes"
+            }]
+        },
+        {"name": "cinnabar-island",
+            "subareas": [{
+                "name": "pokemon-mansion",
+                "in-town": "yes"
+            }]
+        },
         //{"name": "digletts-cave"},
-        {"name": "fuchsia-city"},
+        {
+            "name": "fuchsia-city",
+            "subareas": [{
+                "name": "kanto-safari-zone",
+                "in-town": "yes"
+            }]
+        },
         //{"name": "mt-moon"},
         {"name": "pallet-town"},
         //{"name": "rock-tunnel"},
         //{"name": "seafoam-islands"},
-        {"name": "cerulean-cave"},
+        //{"name": "cerulean-cave"},
         {"name": "vermilion-city"},
         {"name": "viridian-city"},
         //{"name": "viridian-forest"},
         //{"name": "power-plant"},
-        {"name": "pokemon-tower"},
-        {"name": "pokemon-mansion"},
-        {"name": "kanto-safari-zone"},
+        //{"name": "pokemon-tower"},
+        //{"name": "pokemon-mansion"},
+        //{"name": "kanto-safari-zone"},
         {"name": "pewter-city"},
-        {"name": "lavender-town"},
+        {
+            "name": "lavender-town",
+            "subareas": [{
+                "name": "pokemon-tower",
+                "in-town": "yes"
+            }]
+        },
         {"name": "indigo-plateau"},
         {"name": "saffron-city"},
         //{"name": "kanto-victory-road-1"}

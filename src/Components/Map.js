@@ -11,10 +11,21 @@ import '../CSS/Map.css'
 import '../CSS/kanto_grid_areas.css'
 
 class Map extends Component {
+    constructor(){
+        super();
+        this.state = {
+            selectedArea : undefined,
+        }
+    }
+
     render(){
+        let {selectedArea} = this.state;
         return(
             <>
-                <h1>Map</h1>
+                {selectedArea === undefined 
+                    ? <h1>MAP</h1> 
+                    : <h1>{selectedArea}</h1>
+                }
                 <div id="map-holder">
                 <div id="position-container">
                     <div id="filler"></div>
