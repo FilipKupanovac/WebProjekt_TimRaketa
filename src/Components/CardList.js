@@ -9,6 +9,7 @@ const CardList = ({ pokemons }) => {
           return (
             <Card
               key={i}
+              id={i+1}
               pokemon={pokemon}
             />
           );
