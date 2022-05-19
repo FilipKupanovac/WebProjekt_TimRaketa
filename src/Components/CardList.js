@@ -8,8 +8,7 @@ const CardList = ({ pokemons }) => {
         pokemons.map((pokemon, i) => {
           return (
             <Card
-              key={i}
-              id={i+1}
+              key={pokemon.url.split("/")[6]}
               pokemon={pokemon}
             />
           );
