@@ -34,7 +34,7 @@ class Pokedex extends Component {
     }
 
     onSearchChange = (event) => {
-        this.setState({ searchfield: event.target.value, filteredPokemons: this.filterPokemons() })
+        this.setState({ searchfield: event.target.value })
 
     }
 
@@ -47,24 +47,14 @@ class Pokedex extends Component {
     }
 
     render() {
-        // const { pokedex, searchfield } = this.state;
-        // const filtered = pokedex.filter(pokemon => {
-        //     if (pokemon.name.toLowerCase().includes(searchfield.toLowerCase())) {
-        //         console.log(pokemon);
-        //     }
-        //     return pokemon.name.toLowerCase().includes(searchfield.toLowerCase());
-        // })
-
-
         return (
             <div className='tc'>
-                <h1 className='f1'>Pokemon</h1>
+                <h1 className='f1'>Pokémon</h1>
                 <SearchBox searchChange={this.onSearchChange} />
                 <Scroll>
                     <CardList pokemons={this.filterPokemons()} />
                 </Scroll>
             </div>
-
         )
     }
 }

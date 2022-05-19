@@ -28,8 +28,7 @@ class Card extends Component {
     //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
     //idea: use expanded view when pokemon is clicked to show detailed info about it
     var { areas, id, pokemon } = this.state
-    var tempArray = pokemon.url.split("/")
-    this.setState({id: tempArray[6]})
+    this.setState({id: this.extractNumberFromPokemon(pokemon)})
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
       .then(resp => resp.json())
@@ -53,7 +52,6 @@ class Card extends Component {
 
   render() {
     var { pokemon, id } = this.state;
-    // var { key } = this.props;
     return (
       <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'
         onClick={() => { this.logEncounterAreas() }}
@@ -84,6 +82,10 @@ class Card extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
+  extractNumberFromPokemon = (pokemon) => {
+    var tempArray = pokemon.url.split("/")
+    return tempArray[6]
+  }
 }
 
 export default Card
