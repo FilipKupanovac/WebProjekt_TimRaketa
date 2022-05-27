@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import Card from './Card';
 import DetailsCard from './DetailsCard';
 
@@ -9,7 +9,7 @@ class CardList extends Component {
     super(props);
     this.state = {
       filteredPokemons: this.props.pokemons,
-      clickedPokemon: undefined
+      clickedPokemon: 'bulbasaur'
     }
   }
 
@@ -40,6 +40,29 @@ class CardList extends Component {
       </div>
     )
   }
+}
+
+export default CardList; */
+
+import React from 'react';
+import Card from './Card';
+
+const CardList = ({ pokemons }) => {
+  return (
+    <div>
+      {
+        pokemons.map((pokemon, i) => {
+          return (
+            <Card
+              key={pokemon.url.split("/")[6]}
+              id={pokemon.url.split("/")[6]}
+              pokemon={pokemon}
+            />
+          );
+        })
+      }
+    </div>
+  );
 }
 
 export default CardList;

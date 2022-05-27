@@ -18,7 +18,7 @@ class Card extends Component {
     super(props)
     this.state = {
       pokemon: this.props.pokemon,
-      id: 1,
+      id: this.props.id,
       areas: []
     }
   }
@@ -53,7 +53,7 @@ class Card extends Component {
   render() {
     var { pokemon, id } = this.state;
     return (
-      <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'
+      <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 card'
         onClick={() => { this.logEncounterAreas() }}
       >
         {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
