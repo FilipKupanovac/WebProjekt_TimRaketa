@@ -12,6 +12,7 @@ import SearchBox from './SearchBox';
 import Scroll from './Scroll';
 //CSS
 import '../CSS/Pokedex.css'
+import DetailsCard from './DetailsCard';
 
 class Pokedex extends Component {
 
@@ -21,7 +22,6 @@ class Pokedex extends Component {
             pokedex: [],
             haveRendered: false,
             searchfield: '',
-            //ADED
             pickedId: undefined
         }
     }
@@ -50,8 +50,7 @@ class Pokedex extends Component {
 
     pickPokemon = (pokeNumber) => {
         this.setState({pickedId: pokeNumber})
-
-        console.log(`PICKED POKEMON IS NOW ${pokeNumber}`)
+        this.setState({aaaa: undefined})
     }
 
     render() {
@@ -59,13 +58,22 @@ class Pokedex extends Component {
             <div className='tc'>
                 <h1 className='f1'>Pokémon</h1>
                 <SearchBox searchChange={this.onSearchChange} />
-                {/* <Scroll> */}
+                <Scroll>
                     <CardList 
                         pokemons={this.filterPokemons()} 
                         pickedId={this.state.pickedId} 
                         pickPokemon={this.pickPokemon}
                     />
-                {/* </Scroll> */}
+                </Scroll>
+
+                { //SHOWS CORRECTLY ONLY FIRST TIME
+                this.state.pickedId !== undefined
+                    ? <DetailsCard
+                        id={this.state.pickedId}
+                        pokemon={this.state.pokedex[this.state.pickedId -1]}
+                        />
+                    : <></>
+                }
             </div>
         )
     }
