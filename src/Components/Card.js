@@ -76,6 +76,7 @@ class Card extends Component {
     console.log(this.state.pokemon.name + " can be encountered at")
     console.log("these areas:\n ")
     console.log(areas)
+    this.props.pickPokemon(this.props.id)
   }
 
   capitalizeFirstLetter = (string) => {

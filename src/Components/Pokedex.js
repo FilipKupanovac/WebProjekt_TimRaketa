@@ -20,7 +20,9 @@ class Pokedex extends Component {
         this.state = {
             pokedex: [],
             haveRendered: false,
-            searchfield: ''
+            searchfield: '',
+            //ADED
+            pickedId: undefined
         }
     }
 
@@ -46,14 +48,24 @@ class Pokedex extends Component {
         })
     }
 
+    pickPokemon = (pokeNumber) => {
+        this.setState({pickedId: pokeNumber})
+
+        console.log(`PICKED POKEMON IS NOW ${pokeNumber}`)
+    }
+
     render() {
         return (
             <div className='tc'>
                 <h1 className='f1'>Pokémon</h1>
                 <SearchBox searchChange={this.onSearchChange} />
-                <Scroll>
-                    <CardList pokemons={this.filterPokemons()} />
-                </Scroll>
+                {/* <Scroll> */}
+                    <CardList 
+                        pokemons={this.filterPokemons()} 
+                        pickedId={this.state.pickedId} 
+                        pickPokemon={this.pickPokemon}
+                    />
+                {/* </Scroll> */}
             </div>
         )
     }

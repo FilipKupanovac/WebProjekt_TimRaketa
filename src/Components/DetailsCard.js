@@ -12,13 +12,13 @@ import '../CSS/DetailsCard.css'
  * ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
  */
 
-class Card extends Component {
+class DetailsCard extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       pokemon: this.props.pokemon,
-      id: 1,
+      id: this.props.id,
       areas: []
     }
   }
@@ -53,7 +53,7 @@ class Card extends Component {
   render() {
     var { pokemon, id, areas } = this.state;
     return (
-      <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'
+      <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card'
         onClick={() => { this.logEncounterAreas() }}
       >
         {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
@@ -63,7 +63,7 @@ class Card extends Component {
         <div>
           <h2>{ this.capitalizeFirstLetter(pokemon.name) }</h2>
           <h3>#{ id }</h3>
-          <p>Can be caught at: { areas }</p>
+          {/* <p>Can be caught at: { areas }</p> */}
         </div>
       </div>
     );
@@ -89,4 +89,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default DetailsCard;

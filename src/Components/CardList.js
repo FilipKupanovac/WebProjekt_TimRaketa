@@ -26,11 +26,13 @@ class CardList extends Component {
                 ?
                 <DetailsCard
                   key={pokemon.url.split("/")[6]}
+                  id={pokemon.url.split("/")[6]}
                   pokemon={pokemon}
                 />
                 :
                 <Card
                   key={pokemon.url.split("/")[6]}
+                  id={pokemon.url.split("/")[6]}
                   pokemon={pokemon}
                   onClick={this.setState({ clickedPokemon: pokemon })}
                 />
@@ -46,19 +48,31 @@ export default CardList; */
 
 import React from 'react';
 import Card from './Card';
+import DetailsCard from './DetailsCard';
 
-const CardList = ({ pokemons }) => {
+const CardList = ({ pokemons, pickedId, pickPokemon }) => {
   return (
     <div>
       {
         pokemons.map((pokemon, i) => {
-          return (
-            <Card
-              key={pokemon.url.split("/")[6]}
-              id={pokemon.url.split("/")[6]}
-              pokemon={pokemon}
-            />
-          );
+          if(pickedId === pokemon.url.split("/")[6])
+            return (
+              <DetailsCard
+                key={pokemon.url.split("/")[6]}
+                id={pokemon.url.split("/")[6]}
+                pokemon={pokemon}
+                pickPokemon={pickPokemon}
+              />
+            );
+          else
+              return(
+                <Card
+                key={pokemon.url.split("/")[6]}
+                id={pokemon.url.split("/")[6]}
+                pokemon={pokemon}
+                pickPokemon={pickPokemon}
+              />
+              )
         })
       }
     </div>
