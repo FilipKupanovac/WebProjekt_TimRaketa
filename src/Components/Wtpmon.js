@@ -1,7 +1,6 @@
 //MISC
 import React, { Component } from 'react';
 //COMPONENTS
-import { mockPokedex } from '../mockPokedex'
 //CSS
 import '../CSS/Wtpmon.css'
 
@@ -33,16 +32,22 @@ class WTPmon extends Component {
     }
 
     startNewGame = () => {
-        var newPokemon = this.getRandomPokemonIndex();
+        fetch(`https://pokeapi.co/api/v2/pokemon/${this.getRandomPokemonIndex()}`) 
+        .then(resp => resp.json())
+        .then(resp => {
+            //eslint-disable-next-line
+            console.log(resp);
+            this.setState({
+                currentPokemon: resp,
+                guesses: [],
+                correctGuess: false,
+                firstLetterRevealed: false,
+                lettersNumberRevealed: false,
+                typeRevealed: false
+            });        })
+
         this.enableInput();
-        this.setState({
-            currentPokemon: mockPokedex.results[newPokemon],
-            guesses: [],
-            correctGuess: false,
-            firstLetterRevealed: false,
-            lettersNumberRevealed: false,
-            typeRevealed: false
-        });
+        
     }
 
     render() {
@@ -58,7 +63,7 @@ class WTPmon extends Component {
             <>
                 <div className='tc fireworks-container'>
                     <h1>WHO'S THAT POKEMON?</h1>
-                    {correctGuess ? <div class="animate three">
+                    {correctGuess ? <div className="animate three">
                         <span>C</span><span>o</span><span>n</span><span>g</span><span>r</span><span>a</span><span>t</span><span>u</span><span>l</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span><span>!</span>
                     </div> : guesses.length === 5 ? <p>Better luck next time!</p> : <></>}
                     {
@@ -66,7 +71,7 @@ class WTPmon extends Component {
                             ? <img
                                 className={correctGuess ? "wtpmon" : "wtpmon pokemon-image-black"}
                                 id="pokemonImage"
-                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.number}.png`}
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`}
                                 alt="nema sliku" />
                             : <></>
                     }
@@ -153,7 +158,7 @@ class WTPmon extends Component {
     }
 
     getRandomPokemonIndex = () => {
-        return Math.floor(Math.random() * 20)
+        return Math.floor(Math.random() * 151)
     }
 
     capitalizeFirstLetter = (string) => {

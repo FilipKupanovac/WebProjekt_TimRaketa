@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 //Components
 
 //CSS
-import '../CSS/Card.css'
+import '../CSS/DetailsCard.css'
 
 /** TODO
  * 
@@ -51,7 +51,7 @@ class Card extends Component {
   }
 
   render() {
-    var { pokemon, id } = this.state;
+    var { pokemon, id, areas } = this.state;
     return (
       <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'
         onClick={() => { this.logEncounterAreas() }}
@@ -63,6 +63,7 @@ class Card extends Component {
         <div>
           <h2>{ this.capitalizeFirstLetter(pokemon.name) }</h2>
           <h3>#{ id }</h3>
+          <p>Can be caught at: { areas }</p>
         </div>
       </div>
     );
