@@ -7,6 +7,7 @@ import Map from '../Components/Map'
 import Signin from './SignIn'
 import Register from './Register'
 import UserProfile from './UserProfile';
+import WTPmon from './Wtpmon';
 //CSS
 import '../CSS/App.css';
 
@@ -37,7 +38,7 @@ class App extends Component {
     switch(currentTab){
       case `pokedex`: return <Pokedex />
       case `map`: return <Map />
-      case `wtpmon`: return <h1>WHO'S THAT POKEMON TAB</h1>
+      case `wtpmon`: return <WTPmon />
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
       case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
       case `profile`: return <UserProfile username={username}/>
@@ -89,5 +90,7 @@ export default App;
  * https://stackoverflow.com/questions/51282464/using-a-dynamic-key-to-setstate-in-react
  * https://stackoverflow.com/questions/44596025/unexpected-use-of-event-no-restricted-globals-when-using-event-target-id-to-ge
  * https://reactjs.org/docs/handling-events.html
+ * https://css-tricks.com/almanac/properties/a/aspect-ratio/
+ * https://css-tricks.com/snippets/css/complete-guide-grid/
  * 
  */
