@@ -35,7 +35,7 @@ class Pokedex extends Component {
 
     onSearchChange = (event) => {
         this.setState({ searchfield: event.target.value })
-
+        console.log(event.target.value);
     }
 
     filterPokemons = () => {
