@@ -7,15 +7,15 @@ const CardList = ({ pokemons, pickedId, pickPokemon }) => {
       {
         pokemons.map((pokemon, i) => {
           let isPicked = (pokemon.url.split("/")[6] === pickedId)
-              return(
-                <Card
-                key={pokemon.url.split("/")[6]}
-                id={pokemon.url.split("/")[6]}
-                pokemon={pokemon}
-                pickPokemon={pickPokemon}
-                isPicked = {isPicked}
-              />
-              )
+          return (
+            <Card
+              key={pokemon.url.split("/")[6]}
+              id={pokemon.url.split("/")[6]}
+              pokemon={pokemon}
+              pickPokemon={pickPokemon}
+              isPicked={isPicked}
+            />
+          )
         })
       }
     </div>

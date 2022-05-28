@@ -49,8 +49,8 @@ class Pokedex extends Component {
     }
 
     pickPokemon = (pokeNumber) => {
-        this.setState({pickedId: undefined})
-        this.setState({pickedId: pokeNumber})
+        this.setState({ pickedId: undefined })
+        this.setState({ pickedId: pokeNumber })
 
     }
 
@@ -61,21 +61,21 @@ class Pokedex extends Component {
                 <h1 className='f1'>Pokémon</h1>
                 <SearchBox searchChange={this.onSearchChange} />
                 <Scroll>
-                    <CardList 
-                        pokemons={this.filterPokemons()} 
-                        pickedId={pickedId} 
+                    <CardList
+                        pokemons={this.filterPokemons()}
+                        pickedId={pickedId}
                         pickPokemon={this.pickPokemon}
                     />
                 </Scroll>
 
                 {
-                pickedId !== undefined
-                    ? <DetailsCard
-                        key={pickedId}
-                        id={pickedId}
-                        pokemon={pokedex[pickedId -1]}
+                    pickedId !== undefined
+                        ? <DetailsCard
+                            key={pickedId}
+                            id={pickedId}
+                            pokemon={pokedex[pickedId - 1]}
                         />
-                    : <></>
+                        : <></>
                 }
             </div>
         )

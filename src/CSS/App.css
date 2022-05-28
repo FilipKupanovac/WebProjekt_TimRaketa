@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,27 +40,27 @@
 
 .body {
   width: 80%;
-  height:max-content;
+  height: max-content;
   margin: 0 auto;
   justify-content: center;
   min-width: 400px;
 }
 
-iframe{
+iframe {
   margin-top: 50px;
 }
 
-input{
+input {
   width: 200px;
   min-width: 200px;
 }
 
-.flexi{
+.flexi {
   display: flex;
   flex-flow: row wrap;
 }
 
-p.linker{
+p.linker {
   color: -webkit-link;
   cursor: pointer;
   text-decoration: underline;

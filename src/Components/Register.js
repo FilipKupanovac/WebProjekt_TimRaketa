@@ -1,39 +1,39 @@
 //register new user, username, email and password required
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 //Components
 
 //CSS
 
-class Register extends Component{
-    constructor(){
+class Register extends Component {
+    constructor() {
         super();
         this.state = {
-            email : '',
-            username : '',
-            password : ''
+            email: '',
+            username: '',
+            password: ''
         }
     }
-    render(){
-        let {changeCurrentTab} = this.props
-        return(
+    render() {
+        let { changeCurrentTab } = this.props
+        return (
             <div className="tc">
                 <h1>Register</h1>
                 <div className="flexi form-w space-between">
                     <p>Email</p>
                     <input type="email" placeholder="enter your email"
-                    onChange={(event) => {this.onInputChange(`email`, event)}}
+                        onChange={(event) => { this.onInputChange(`email`, event) }}
                     ></input>
                 </div>
                 <div className="flexi form-w space-between">
                     <p>Username</p>
                     <input type="text" placeholder="enter your username"
-                    onChange={(event) => {this.onInputChange(`username`, event)}}
+                        onChange={(event) => { this.onInputChange(`username`, event) }}
                     ></input>
                 </div>
                 <div className="flexi form-w space-between">
                     <p>Password</p>
                     <input type="password" placeholder="enter your password"
-                    onChange={(event) => {this.onInputChange(`password`, event)}}
+                        onChange={(event) => { this.onInputChange(`password`, event) }}
                     ></input>
                 </div>
                 <button
@@ -50,8 +50,8 @@ class Register extends Component{
 
     tryRegister = () => {
         //for mock register only requirements are username length > 5 and password = `pokedex`
-        let {email,username,password} = this.state;
-        if(email !== '' && username.length > 5 && password === 'pokedex'){
+        let { email, username, password } = this.state;
+        if (email !== '' && username.length > 5 && password === 'pokedex') {
             this.props.loginUser(username);
             this.props.changeCurrentTab('pokedex')
         }
@@ -59,9 +59,9 @@ class Register extends Component{
 
     onInputChange = (key, event) => {
         console.log(`SET ${key} as: ${event.target.value}`)
-        this.setState({[key] : event.target.value})
+        this.setState({ [key]: event.target.value })
     }
 }
-    
+
 
 export default Register

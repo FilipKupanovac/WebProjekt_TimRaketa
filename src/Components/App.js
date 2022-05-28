@@ -23,55 +23,55 @@ import '../CSS/App.css';
  */
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      signedIn : false,
-      currentTab : 'pokedex',
+      signedIn: false,
+      currentTab: 'pokedex',
       username: undefined
     }
   }
 
   //METHODS LIKE THIS ONE CAN NOT CHANGE STATE OF COMPONENT FOR SAFETY REASONS BECAUSE THEY ARE RUN INSIDE RENDER METHOD -> WOULD LEAD TO AN INFINITE LOOP - react throws error itself, this is just a notice
   displayCurrentTab = () => {
-    let {currentTab, username} = this.state;
-    switch(currentTab){
+    let { currentTab, username } = this.state;
+    switch (currentTab) {
       case `pokedex`: return <Pokedex />
       case `map`: return <Map />
       case `wtpmon`: return <WTPmon />
-      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
-      case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser}/>
-      case `profile`: return <UserProfile username={username}/>
-      default : return <h1>odjava</h1>
+      case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
+      case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
+      case `profile`: return <UserProfile username={username} />
+      default: return <h1>odjava</h1>
     }
   }
 
   //OBAVEZNO OVAKVA DEFINICIJA VLASTITE FUNKCIJE KAKO BI RADILO
   //PRIPAZI KOD SETSTATE METODE, ima 2 para zagrada, ( { key : value } )
   changeCurrentTab = (newTab) => {
-    this.setState({currentTab : newTab})
+    this.setState({ currentTab: newTab })
   }
   loginUser = (_username) => {
-    this.setState({username : _username, signedIn : true})
+    this.setState({ username: _username, signedIn: true })
   }
   logout = () => {
     //MAYBE ADD PROMPT WITH ADDITIONAL CONFIRM BOX
-    this.setState({username: undefined, signedIn: false, currentTab : 'pokedex'})
+    this.setState({ username: undefined, signedIn: false, currentTab: 'pokedex' })
   }
 
-  render(){
-    let {signedIn,username} = this.state;
+  render() {
+    let { signedIn, username } = this.state;
     return (
-        <div className="body">
-          <Navigation 
-            signedIn={signedIn} 
-            changeCurrentTab={this.changeCurrentTab}
-            username={username}
-            logout = {this.logout}
-          />
-          {this.displayCurrentTab()}
-          <p><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
-        </div>
+      <div className="body">
+        <Navigation
+          signedIn={signedIn}
+          changeCurrentTab={this.changeCurrentTab}
+          username={username}
+          logout={this.logout}
+        />
+        {this.displayCurrentTab()}
+        <p><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
+      </div>
     );
   }
 }

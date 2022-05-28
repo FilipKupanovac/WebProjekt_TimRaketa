@@ -12,120 +12,120 @@ import '../CSS/DetailsCard.css'
  * ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
  */
 
- class DetailsCard extends Component {
+class DetailsCard extends Component {
 
-   constructor(props) {
-     super(props)
-     this.state = {
-       pokemon: this.props.pokemon,
-       id: this.props.id,
-       areas: [],
-       types: []
-     }
-   }
+  constructor(props) {
+    super(props)
+    this.state = {
+      pokemon: this.props.pokemon,
+      id: this.props.id,
+      areas: [],
+      types: []
+    }
+  }
 
-   componentDidMount() {
-     //#region FETCHING AREAS
-     //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
-     //idea: use expanded view when pokemon is clicked to show detailed info about it
-     var { areas, id, pokemon } = this.state
-     this.setState({id: this.extractNumberFromPokemon(pokemon)})
+  componentDidMount() {
+    //#region FETCHING AREAS
+    //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
+    //idea: use expanded view when pokemon is clicked to show detailed info about it
+    var { areas, id, pokemon } = this.state
+    this.setState({ id: this.extractNumberFromPokemon(pokemon) })
 
-     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
-       .then(resp => resp.json())
-       .then(resp => {
-         //eslint-disable-next-line
-         areas = resp.filter(area => {
-           var foundEncounterArea = false;
-           area.version_details.forEach(element => {
-             if (element.version.name === 'firered')
-               foundEncounterArea = true;
-           });
-           if (foundEncounterArea === true) {
-             return area;
-           }
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
+      .then(resp => resp.json())
+      .then(resp => {
+        //eslint-disable-next-line
+        areas = resp.filter(area => {
+          var foundEncounterArea = false;
+          area.version_details.forEach(element => {
+            if (element.version.name === 'firered')
+              foundEncounterArea = true;
+          });
+          if (foundEncounterArea === true) {
+            return area;
+          }
 
-         })
-         this.setState({ areas: areas })
-       })
-     //#endregion
-
-       //get pokemon types
-       fetch(pokemon.url)
-        .then(resp => resp.json())
-        .then(resp => {
-          this.setState({ types: resp.types })
         })
-   }
-
-   render() {
-     var { pokemon, id, areas, types } = this.state;
-     return (
-       <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'
-         onClick={() => { this.logEncounterAreas() }}
-       >
-         {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
-         <h2>#{ id } { this.capitalizeFirstLetter(pokemon.name) }</h2>
-          <div>
-                     {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE*/
-         
-           <img className="official-artwork-detailed"
-           alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
-
-              {
-                types.map(type => {
-                  return(
-                    <img src={this.handleTypesDisplay(type)}
-                        className="pokemon-type-icon"
-                        alt={type.type.name}
-                    ></img>
-                  )
-                })
-              }
-          </div>
-         <div>
-           {/* <p>Can be caught at: { areas }</p> */}
-           
-           {
-             areas.map((location, i) => {
-               return(
-                 <p key={i}>{this.prepareLocationNameForRender(location.location_area.name)}</p>
-               )
-             })
-           }
-         </div>
-       </div>
-     );
-   }
-
-   prepareLocationNameForRender = (locationName) => {
-      var splitLocationName = locationName.split("-")
-      var capitalizedSplitLocationName = splitLocationName.map( word => {
-        return this.capitalizeFirstLetter(word)
+        this.setState({ areas: areas })
       })
-      return capitalizedSplitLocationName.join(" ")
-   }
+    //#endregion
 
-   logEncounterAreas = () => {
-     /**
-      * JUST FOR EXAMPLE, INSTEAD OF THIS, EXPAND VIEW FOR SPECIFIC POKEMON 
-      */
-     var { areas } = this.state;
-     console.log(this.state.pokemon.name + " can be encountered at these areas:")
-     console.log(areas)
-   }
+    //get pokemon types
+    fetch(pokemon.url)
+      .then(resp => resp.json())
+      .then(resp => {
+        this.setState({ types: resp.types })
+      })
+  }
 
-   capitalizeFirstLetter = (string) => {
-     return string.charAt(0).toUpperCase() + string.slice(1)
-   }
+  render() {
+    var { pokemon, id, areas, types } = this.state;
+    return (
+      <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'
+        onClick={() => { this.logEncounterAreas() }}
+      >
+        {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
+        <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
+        <div>
+          {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE*/
 
-   extractNumberFromPokemon = (pokemon) => {
-     var tempArray = pokemon.url.split("/")
-     return tempArray[6]
-   }
+            <img className="official-artwork-detailed"
+              alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
 
-   handleTypesDisplay = (type) => {
-    switch(type.type.name) {
+          {
+            types.map(type => {
+              return (
+                <img src={this.handleTypesDisplay(type)}
+                  className="pokemon-type-icon"
+                  alt={type.type.name}
+                ></img>
+              )
+            })
+          }
+        </div>
+        <div>
+          {/* <p>Can be caught at: { areas }</p> */}
+
+          {
+            areas.map((location, i) => {
+              return (
+                <p key={i}>{this.prepareLocationNameForRender(location.location_area.name)}</p>
+              )
+            })
+          }
+        </div>
+      </div>
+    );
+  }
+
+  prepareLocationNameForRender = (locationName) => {
+    var splitLocationName = locationName.split("-")
+    var capitalizedSplitLocationName = splitLocationName.map(word => {
+      return this.capitalizeFirstLetter(word)
+    })
+    return capitalizedSplitLocationName.join(" ")
+  }
+
+  logEncounterAreas = () => {
+    /**
+     * JUST FOR EXAMPLE, INSTEAD OF THIS, EXPAND VIEW FOR SPECIFIC POKEMON 
+     */
+    var { areas } = this.state;
+    console.log(this.state.pokemon.name + " can be encountered at these areas:")
+    console.log(areas)
+  }
+
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
+  extractNumberFromPokemon = (pokemon) => {
+    var tempArray = pokemon.url.split("/")
+    return tempArray[6]
+  }
+
+  handleTypesDisplay = (type) => {
+    switch (type.type.name) {
       case "bug":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Pok%C3%A9mon_Bug_Type_Icon.svg/1920px-Pok%C3%A9mon_Bug_Type_Icon.svg.png"
       case "dragon":
@@ -163,10 +163,10 @@ import '../CSS/DetailsCard.css'
       case "dark":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Pok%C3%A9mon_Dark_Type_Icon.svg/1920px-Pok%C3%A9mon_Dark_Type_Icon.svg.png"
       default:
-        // code block
+      // code block
     }
   }
 
- }
+}
 
 export default DetailsCard;

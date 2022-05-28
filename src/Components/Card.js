@@ -28,7 +28,7 @@ class Card extends Component {
     //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
     //idea: use expanded view when pokemon is clicked to show detailed info about it
     var { areas, id, pokemon } = this.state
-    this.setState({id: this.extractNumberFromPokemon(pokemon)})
+    this.setState({ id: this.extractNumberFromPokemon(pokemon) })
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
       .then(resp => resp.json())
@@ -54,9 +54,9 @@ class Card extends Component {
     var { pokemon, id } = this.state;
     return (
       <div
-          className={this.props.isPicked
-            ? 'tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card' 
-            : 'tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 card'}
+        className={this.props.isPicked
+          ? 'tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card'
+          : 'tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 card'}
         onClick={() => { this.logEncounterAreas() }}
       >
         {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
@@ -64,8 +64,8 @@ class Card extends Component {
           <img className="official-artwork"
             alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
         <div>
-          <h2>{ this.capitalizeFirstLetter(pokemon.name) }</h2>
-          <h3>#{ id }</h3>
+          <h2>{this.capitalizeFirstLetter(pokemon.name)}</h2>
+          <h3>#{id}</h3>
         </div>
       </div>
     );
