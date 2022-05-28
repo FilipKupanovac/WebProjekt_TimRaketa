@@ -60,12 +60,13 @@ class DetailsCard extends Component {
     var { pokemon, id, areas, types } = this.state;
     return (
       <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
-        <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
-        <div className="">
-          {
-            <img className="official-artwork-detailed"
-              alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
-
+        {/* <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2> */}
+        <div className="info-container">
+          <div className="icon-container"><p>ZVIJEZDA MAJONEZA FAVORITI</p></div>
+          <div className="icon-container">
+            <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
+          </div>
+          <div className="icon-container types">
           {
             types.map((type, i) => {
               return (
@@ -78,6 +79,12 @@ class DetailsCard extends Component {
               )
             })
           }
+          </div>
+        </div>
+        <div>
+          {
+            <img className="official-artwork-detailed"
+              alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
         </div>
         <div>
           { areas.length 

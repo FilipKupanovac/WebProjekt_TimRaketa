@@ -16,10 +16,25 @@
 
 .detailed {
     width: 100%;
+    /* min-width: 600px; */
 }
 
 .type-container {
     min-width: 500px;
     display: flex;
     flex-flow: row wrap;
+}
+
+.info-container{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.icon-container{
+    width: min(25%, 150px);
+}
+
+.types{
+    min-width: 170px;
 }
