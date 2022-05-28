@@ -61,9 +61,7 @@ class DetailsCard extends Component {
   render() {
     var { pokemon, id, areas, types } = this.state;
     return (
-      <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'
-        onClick={() => { this.logEncounterAreas() }}
-      >
+      <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
         {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
         <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
         <div>
@@ -73,9 +71,11 @@ class DetailsCard extends Component {
               alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
 
           {
-            types.map(type => {
+            types.map((type, i) => {
               return (
-                <img src={this.handleTypesDisplay(type)}
+                <img
+                  key={i} 
+                  src={this.handleTypesDisplay(type)}
                   className="pokemon-type-icon"
                   alt={type.type.name}
                 ></img>
@@ -104,15 +104,6 @@ class DetailsCard extends Component {
       return this.capitalizeFirstLetter(word)
     })
     return capitalizedSplitLocationName.join(" ")
-  }
-
-  logEncounterAreas = () => {
-    /**
-     * JUST FOR EXAMPLE, INSTEAD OF THIS, EXPAND VIEW FOR SPECIFIC POKEMON 
-     */
-    var { areas } = this.state;
-    console.log(this.state.pokemon.name + " can be encountered at these areas:")
-    console.log(areas)
   }
 
   capitalizeFirstLetter = (string) => {

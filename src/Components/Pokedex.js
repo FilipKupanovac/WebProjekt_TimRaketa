@@ -49,7 +49,6 @@ class Pokedex extends Component {
     }
 
     pickPokemon = (pokeNumber) => {
-        this.setState({ pickedId: undefined })
         this.setState({ pickedId: pokeNumber })
 
     }
