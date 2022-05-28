@@ -17,7 +17,7 @@ const MapArea = ({ i, area, setLocationOnHover, getAreaInfo }) => {
             }
             }
             onClick={() => {
-                getAreaInfo()
+                getAreaInfo(area)
             }}
         >
             {

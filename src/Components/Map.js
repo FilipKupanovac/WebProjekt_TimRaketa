@@ -15,11 +15,12 @@ class Map extends Component {
         super();
         this.state = {
             selectedArea: undefined,
+            pokemon_encounters: []
         }
     }
 
     render() {
-        let { selectedArea } = this.state;
+        let { selectedArea, pokemon_encounters } = this.state;
         return (
             <>
                 {selectedArea === undefined
@@ -47,6 +48,11 @@ class Map extends Component {
 
                     </div>
                 </div>
+                {
+                    pokemon_encounters.map((pokemon,i) => {
+                        return <p key={i}>{pokemon}</p>
+                    })
+                }
                 <hr />
             </>
         )
@@ -56,8 +62,32 @@ class Map extends Component {
         this.setState({ selectedArea: areaName })
     }
 
-    getAreaInfo = () => {
-        console.log("API FETCH CALL");
+    getAreaInfo = (area) => {
+        console.log("CLICKED AREA");
+        console.log(area)
+        fetch(`https://pokeapi.co/api/v2/location-area/${area.name}/`)
+            .then(Response => Response.json())
+            .then(res => {
+                //console.log(res)
+                let encounters = res.pokemon_encounters;
+                let fireredPokemon = encounters.filter(encounter =>{
+                    let isFirered = false;
+                    encounter.version_details.map(version =>{
+                        if(version.version.name === 'firered'){
+                            //console.log("VERSION firered")
+                            //console.log(encounter.pokemon.name)
+                            isFirered=true;
+                        }
+                    })
+                    if(isFirered){
+                        return encounter
+                    }
+                })
+                let names = fireredPokemon.map(element => {
+                    return element.pokemon.name
+                })
+                this.setState({pokemon_encounters : names});
+            })
     }
 }
 
