@@ -10,6 +10,7 @@ import UserProfile from './UserProfile';
 import WTPmon from './Wtpmon';
 //CSS
 import '../CSS/App.css';
+import Favorites from './Favorites';
 
 /*TODO
  *class has to remember user data- login status (logged in or not)-additional renderings according to login status
@@ -42,6 +43,7 @@ class App extends Component {
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
       case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
       case `profile`: return <UserProfile username={username} />
+      case `favorites`: return <Favorites username={username}/>
       default: return <h1>odjava</h1>
     }
   }

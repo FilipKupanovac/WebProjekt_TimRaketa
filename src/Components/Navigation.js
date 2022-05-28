@@ -26,6 +26,13 @@ class Navigation extends Component {
           onClick={() => this.props.changeCurrentTab(`wtpmon`)}>
           Who's that POKEMON?
         </p>
+        { this.props.signedIn ?
+          <p className="nav-par"
+            onClick={() => this.props.changeCurrentTab(`favorites`)}>
+              Favorites
+          </p>
+          : <></>
+        }
 
         <SignedProfile
           signedIn={this.props.signedIn}
