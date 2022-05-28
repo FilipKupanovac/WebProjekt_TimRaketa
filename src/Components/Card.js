@@ -24,11 +24,10 @@ class Card extends Component {
   }
 
   componentDidMount() {
-    //#region FETCHING AREAS
     //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
     //idea: use expanded view when pokemon is clicked to show detailed info about it
     var { areas, id, pokemon } = this.state
-    this.setState({id: this.extractNumberFromPokemon(pokemon)})
+    this.setState({ id: this.extractNumberFromPokemon(pokemon) })
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
       .then(resp => resp.json())
@@ -47,35 +46,28 @@ class Card extends Component {
         })
         this.setState({ areas: areas })
       })
-    //#endregion
   }
 
   render() {
     var { pokemon, id } = this.state;
     return (
-      <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 card'
-        onClick={() => { this.logEncounterAreas() }}
+      <div
+        className={this.props.isPicked
+          ? 'tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card'
+          : 'tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 card'}
+        onClick={() => { this.props.pickPokemon(id) }}
       >
-        {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
-        {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE*/
+        {
           <img className="official-artwork"
-            alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
+            alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} 
+          />
+        }
         <div>
-          <h2>{ this.capitalizeFirstLetter(pokemon.name) }</h2>
-          <h3>#{ id }</h3>
+          <h2>{this.capitalizeFirstLetter(pokemon.name)}</h2>
+          <h3>#{id}</h3>
         </div>
       </div>
     );
-  }
-
-  logEncounterAreas = () => {
-    /**
-     * JUST FOR EXAMPLE, INSTEAD OF THIS, EXPAND VIEW FOR SPECIFIC POKEMON 
-     */
-    var { areas } = this.state;
-    console.log(this.state.pokemon.name + " can be encountered at")
-    console.log("these areas:\n ")
-    console.log(areas)
   }
 
   capitalizeFirstLetter = (string) => {
@@ -88,4 +80,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Card;

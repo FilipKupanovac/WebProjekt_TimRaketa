@@ -32,22 +32,23 @@ class WTPmon extends Component {
     }
 
     startNewGame = () => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${this.getRandomPokemonIndex()}`) 
-        .then(resp => resp.json())
-        .then(resp => {
-            //eslint-disable-next-line
-            console.log(resp);
-            this.setState({
-                currentPokemon: resp,
-                guesses: [],
-                correctGuess: false,
-                firstLetterRevealed: false,
-                lettersNumberRevealed: false,
-                typeRevealed: false
-            });        })
+        fetch(`https://pokeapi.co/api/v2/pokemon/${this.getRandomPokemonIndex()}`)
+            .then(resp => resp.json())
+            .then(resp => {
+                //eslint-disable-next-line
+                console.log(resp);
+                this.setState({
+                    currentPokemon: resp,
+                    guesses: [],
+                    correctGuess: false,
+                    firstLetterRevealed: false,
+                    lettersNumberRevealed: false,
+                    typeRevealed: false
+                });
+            })
 
         this.enableInput();
-        
+
     }
 
     render() {

@@ -1,4 +1,25 @@
-.official-artwork{
-    width: 200px;
-    height: 200px;
+.official-artwork-detailed {
+    width: 240px;
+    height: 240px;
+}
+
+.pokemon-type-icon {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    margin-bottom: 85px;
+}
+
+.card {
+    width: 250px;
+}
+
+.detailed {
+    width: 100%;
+}
+
+.type-container {
+    min-width: 500px;
+    display: flex;
+    flex-flow: row wrap;
 }

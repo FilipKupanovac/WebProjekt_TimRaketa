@@ -4,11 +4,11 @@ import React, { Component } from 'react';
 
 //CSS
 
-class UserProfile extends Component{
-    render(){
-        let {username} = this.props;  
+class UserProfile extends Component {
+    render() {
+        let { username } = this.props;
 
-        return(
+        return (
             <h1>{username}</h1>
         )
     }

@@ -5,7 +5,7 @@ export const kantoAreas = {
             "location": "Route 1"
         },
         {
-            "name": "kanto-route-2-area",
+            "name": "kanto-route-2-north-towards-pewter-city",
             "location": "Route 2",
             "subareas":[
                 {
