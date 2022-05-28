@@ -11,13 +11,6 @@ import SignedProfile from './SignedProfile'
 import '../CSS/Navigation.css'
 
 class Navigation extends Component {
-  /* OVO JE NEPOTREBNO, JUST FOR EXAMPLE
-  constructor(props){
-    super(props);
-    this.state = {
-      signedIn : false
-    }
-  } */
   render() {
     return (
       <nav className="flex" id="navigation-main">
@@ -43,12 +36,6 @@ class Navigation extends Component {
       </nav>
     );
   }
-  /**TODO
-   * EVERY p ELEMENT NEEDS TO GET PROPER STYLING, ON-HOVER STYLING, ON-CLICK ACTION ...
-   * PICKED TAB SHOULD HAVE SLIGHTLY DIFFERENT BG-COLOR
-   * 
-   */
-
 }
 
 export default Navigation;

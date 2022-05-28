@@ -25,7 +25,6 @@ class DetailsCard extends Component {
   }
 
   componentDidMount() {
-    //#region FETCHING AREAS
     //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
     //idea: use expanded view when pokemon is clicked to show detailed info about it
     var { areas, id, pokemon } = this.state
@@ -48,7 +47,6 @@ class DetailsCard extends Component {
         })
         this.setState({ areas: areas })
       })
-    //#endregion
 
     //get pokemon types
     fetch(pokemon.url)
@@ -62,11 +60,9 @@ class DetailsCard extends Component {
     var { pokemon, id, areas, types } = this.state;
     return (
       <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
-        {/* <img alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} /> */}
         <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
-        <div>
-          {/* THIS IS WITH OFFICIAL ARTWORK - CHOOSE WHICH ONE YOU LIKE MORE*/
-
+        <div className="">
+          {
             <img className="official-artwork-detailed"
               alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
 
@@ -84,8 +80,10 @@ class DetailsCard extends Component {
           }
         </div>
         <div>
-          {/* <p>Can be caught at: { areas }</p> */}
-
+          { areas.length 
+            ? <h5>Can be caught at: </h5>
+            : <h5>Pokemon cannot be caught in the game.</h5>
+          }
           {
             areas.map((location, i) => {
               return (

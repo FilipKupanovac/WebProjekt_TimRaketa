@@ -5,7 +5,7 @@ import React from 'react';
 //CSS
 
 const MapArea = ({ i, area, setLocationOnHover, getAreaInfo }) => {
-    //this notation for area["subareas"] checks if there is key "subareas" in area (line 21)
+    //this notation for area["subareas"] checks if there is key "subareas" in area (line 24)
     return (
         <div key={i} id={`${area.name}`} className="map-area"
             onMouseEnter={() => {
@@ -21,7 +21,7 @@ const MapArea = ({ i, area, setLocationOnHover, getAreaInfo }) => {
             }}
         >
             {
-                area["subareas"] !== undefined //LINE 21
+                area["subareas"] !== undefined
 
                     ? <>
                         {area.subareas.map((subarea, i) => {
@@ -36,7 +36,7 @@ const MapArea = ({ i, area, setLocationOnHover, getAreaInfo }) => {
                                     }
                                     }
                                     onClick={() => {
-                                        getAreaInfo()
+                                        getAreaInfo(subarea)
                                     }}
                                 >
                                     {subarea["in-town"] !== undefined
