@@ -19,6 +19,8 @@ class DetailsCard extends Component {
     this.state = {
       pokemon: this.props.pokemon,
       id: this.props.id,
+      isFavorite: this.props.isFavorite,
+      evolutionChain: [],
       areas: [],
       types: []
     }
@@ -54,40 +56,88 @@ class DetailsCard extends Component {
       .then(resp => {
         this.setState({ types: resp.types })
       })
+
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`)
+      .then(resp => resp.json())
+      .then(resp => {
+        fetch(resp.evolution_chain.url)
+          .then(resp => resp.json())
+          .then(resp => {
+            // tempEvolutions.push(resp.chain.species.url.split("/")[6])
+            var temp = this.fillEvolutionChain(resp.chain).filter((value) => {
+              return value > 0 && value < 152
+            })
+            this.setState({ evolutionChain: temp })
+          })
+      })
   }
 
+
   render() {
-    var { pokemon, id, areas, types } = this.state;
+    var { pokemon, id, areas, types, isFavorite, evolutionChain } = this.state;
+    console.log(evolutionChain);
     return (
-      <div className='tc grow bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
+      <div className='tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
         {/* <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2> */}
         <div className="info-container">
-          <div className="icon-container"><p>ZVIJEZDA MAJONEZA FAVORITI</p></div>
+          <div className="icon-container">
+            <img src={
+              isFavorite ? "https://cdn-icons.flaticon.com/png/512/2377/premium/2377810.png?token=exp=1653829319~hmac=cdca7f38834557d0346e26a898621328"
+                : "https://cdn-icons.flaticon.com/png/512/2956/premium/2956792.png?token=exp=1653829020~hmac=d7dcdf5f136077ede9a691fbd01230ea"
+            }
+              alt='star'
+              className='favorite-icon'
+              onClick={this.toggleIsFavorite}
+            />
+          </div>
           <div className="icon-container">
             <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>
           </div>
           <div className="icon-container types">
-          {
-            types.map((type, i) => {
-              return (
-                <img
-                  key={i} 
-                  src={this.handleTypesDisplay(type)}
-                  className="pokemon-type-icon"
-                  alt={type.type.name}
-                ></img>
-              )
-            })
-          }
+            {
+              types.map((type, i) => {
+                return (
+                  <img
+                    key={i}
+                    src={this.handleTypesDisplay(type)}
+                    className="pokemon-type-icon"
+                    alt={type.type.name}
+                  ></img>
+                )
+              })
+            }
+          </div>
+        </div>
+        <div className='main-container'>
+          <div>
+            {
+              <img className="official-artwork-detailed"
+                alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />
+            }
+
+          </div>
+          <div>
+            {
+              evolutionChain.length === 1
+                ? <></>
+                : <h5>Evolution tree:</h5>
+            }
+            {
+              evolutionChain.length === 1
+                ? <></>
+                : evolutionChain.map((pokemonID, i) => {
+                  return (
+                    <img className="evolution-tree-official-artwork"
+                      key={i}
+                      alt={pokemonID} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonID}.png`} />
+
+                  )
+                })
+            }
           </div>
         </div>
         <div>
-          {
-            <img className="official-artwork-detailed"
-              alt={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} />}
-        </div>
-        <div>
-          { areas.length 
+          {areas.length
             ? <h5>Can be caught at: </h5>
             : <h5>Pokemon cannot be caught in the game.</h5>
           }
@@ -101,6 +151,26 @@ class DetailsCard extends Component {
         </div>
       </div>
     );
+  }
+
+
+  fillEvolutionChain = (chain) => {
+    var currentPokemon = [chain.species.url.split("/")[6]]
+    if (chain.evolves_to.length === 0) {
+      return [chain.species.url.split("/")[6]]
+    } else if (chain.evolves_to.length === 1) {
+      return currentPokemon.concat(this.fillEvolutionChain(chain.evolves_to[0]))
+    } else {
+      for (var i = 0; i < chain.evolves_to.length; i++) {
+        currentPokemon = currentPokemon.concat(this.fillEvolutionChain(chain.evolves_to[i]))
+      }
+      return currentPokemon
+    }
+  }
+
+  toggleIsFavorite = () => {
+    var { isFavorite } = this.state
+    this.setState({ isFavorite: isFavorite ? false : true })
   }
 
   prepareLocationNameForRender = (locationName) => {

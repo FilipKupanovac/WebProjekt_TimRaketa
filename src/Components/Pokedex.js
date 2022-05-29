@@ -73,6 +73,8 @@ class Pokedex extends Component {
                             key={pickedId}
                             id={pickedId}
                             pokemon={pokedex[pickedId - 1]}
+//TO BE CHANGED ON DB IMPLEMENTATION 
+                            isFavorite={false}
                         />
                         : <></>
                 }
