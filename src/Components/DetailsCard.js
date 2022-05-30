@@ -82,8 +82,8 @@ class DetailsCard extends Component {
         <div className="info-container">
           <div className="icon-container">
             <img src={
-              isFavorite ? "https://cdn-icons.flaticon.com/png/512/2377/premium/2377810.png?token=exp=1653829319~hmac=cdca7f38834557d0346e26a898621328"
-                : "https://cdn-icons.flaticon.com/png/512/2956/premium/2956792.png?token=exp=1653829020~hmac=d7dcdf5f136077ede9a691fbd01230ea"
+              isFavorite ? "https://cdn-icons-png.flaticon.com/512/1828/1828614.png"
+                : "https://cdn-icons-png.flaticon.com/512/1828/1828970.png"
             }
               alt='star'
               className='favorite-icon'
