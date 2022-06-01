@@ -1,11 +1,19 @@
-const express = require('express');
-const bodyParser = require('body-parser')
+import express from 'express'
+import bodyParser from 'body-parser'
+import { pokdex } from './pokedex/pokedex.js'
 
 const app = express();
+const pokedex = pokdex()
+
 app.use(bodyParser.json())
 
 app.get('/', (req,res) => {
     res.send(`Server connection working`)
+})
+
+app.get('/pokedex/', (req,res)=> {
+    console.log( pokedex.getAllPokemon() )
+    res.send( pokedex.getAllPokemon() )
 })
 
 app.post('/signin', (req,res) => {

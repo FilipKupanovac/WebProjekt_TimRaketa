@@ -15,72 +15,69 @@ import '../CSS/Pokedex.css'
 import DetailsCard from './DetailsCard';
 
 class Pokedex extends Component {
+  constructor() {
+    super();
+    this.state = {
+      pokedex: [],
+      haveRendered: false,
+      searchfield: "",
+      pickedId: undefined,
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            pokedex: [],
-            haveRendered: false,
-            searchfield: '',
-            pickedId: undefined
-        }
-    }
+  componentDidMount() {
+    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
+      .then((resp) => resp.json())
+      .then((resp) => {
+        this.setState({ pokedex: resp.results });
+      });
+  }
 
-    componentDidMount() {
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
-            .then(resp => resp.json())
-            .then(resp => {
-                this.setState({ pokedex: resp.results })
-            })
+  onSearchChange = (event) => {
+    this.setState({ searchfield: event.target.value });
+    console.log(event.target.value);
+  };
 
-    }
+  filterPokemons = () => {
+    const { pokedex, searchfield } = this.state;
 
-    onSearchChange = (event) => {
-        this.setState({ searchfield: event.target.value })
-        console.log(event.target.value);
-    }
+    return pokedex.filter((pokemon) => {
+      return pokemon.name.toLowerCase().includes(searchfield.toLowerCase());
+    });
+  };
 
-    filterPokemons = () => {
-        const { pokedex, searchfield } = this.state;
+  pickPokemon = (pokeNumber) => {
+    this.setState({ pickedId: pokeNumber });
+  };
 
-        return pokedex.filter(pokemon => {
-            return pokemon.name.toLowerCase().includes(searchfield.toLowerCase());
-        })
-    }
+  render() {
+    var { pickedId, pokedex } = this.state;
+    return (
+      <div className="tc">
+        <h1 className="f1">Pokémon</h1>
+        <SearchBox searchChange={this.onSearchChange} />
+        <Scroll>
+          <CardList
+            pokemons={this.filterPokemons()}
+            pickedId={pickedId}
+            pickPokemon={this.pickPokemon}
+          />
+        </Scroll>
 
-    pickPokemon = (pokeNumber) => {
-        this.setState({ pickedId: pokeNumber })
-
-    }
-
-    render() {
-        var { pickedId, pokedex } = this.state
-        return (
-            <div className='tc'>
-                <h1 className='f1'>Pokémon</h1>
-                <SearchBox searchChange={this.onSearchChange} />
-                <Scroll>
-                    <CardList
-                        pokemons={this.filterPokemons()}
-                        pickedId={pickedId}
-                        pickPokemon={this.pickPokemon}
-                    />
-                </Scroll>
-
-                {
-                    pickedId !== undefined
-                        ? <DetailsCard
-                            key={pickedId}
-                            id={pickedId}
-                            pokemon={pokedex[pickedId - 1]}
-//TO BE CHANGED ON DB IMPLEMENTATION 
-                            isFavorite={false}
-                        />
-                        : <></>
-                }
-            </div>
-        )
-    }
+        {pickedId !== undefined ? (
+          <DetailsCard
+            key={pickedId}
+            id={pickedId}
+            pokemon={pokedex[pickedId - 1]}
+            //TO BE CHANGED ON DB IMPLEMENTATION
+            isFavorite={false}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  }
 }
 
 export default Pokedex
