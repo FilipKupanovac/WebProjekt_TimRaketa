@@ -29,7 +29,6 @@ class Pokedex extends Component {
     fetch("http://localhost:3000/pokedex/")
       .then((resp) => resp.json())
       .then((resp) => {
-        console.log(resp);
         this.setState({ pokedex: resp });
       });
   }
