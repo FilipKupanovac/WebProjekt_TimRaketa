@@ -1,24 +1,24 @@
 import fetch from 'node-fetch';
 
-export function pokdex(){
+export const pokdex = () =>{
 
     function getAllPokemon(){
-        /* let pokedex = {
-            results : []
-        };
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
+        /* let pokedex = "AAAA"
+        await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=11`)
             .then(resp =>
                 resp.json()
             )
             .then(resp => {
-                console.log(resp)
+                pokedex = resp
+                console.log(pokedex)
                 return resp
             })
-        while(pokedex.results.length !== 151){
-            
-        }
-        return pokedex; */
-        return "Getting all pokemon"
+        while(true){
+            pokedex === undefined
+                ? console.log("DIFFF")
+                : pokedex
+        } */
+        //return pokedex;
     }
 
     return{
