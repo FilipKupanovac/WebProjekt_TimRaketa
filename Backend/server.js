@@ -3,10 +3,12 @@ import bodyParser from 'body-parser'
 import { Pokedex } from './pokedex/pokedex.js'
 import cors from 'cors'
 import fetch from 'node-fetch'
+import {Areas} from './area/Areas.js'
 
 const app = express();
+
 const pokedex = Pokedex()
-// const cors = cors();
+const areas = Areas()
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -22,12 +24,17 @@ app.get('/pokedex/', (req,res)=> {
             res.status(200).send(response.results)
         }
     )
-    /* fetch(`https://pokeapi.co/api/v2/pokemon/?limit=11`).then(
+})
+
+app.get(`/map-area/:name`, (req,res) => {
+    let {name} = req.params;
+    const promise = areas.getArea(name)
+
+    promise.then(
         async (response) => {
-            let data = await response.json()
-            res.status(200).send(data.results)
+            res.send(response)
         }
-    ) */
+    )
 })
 
 app.post('/signin', (req,res) => {
