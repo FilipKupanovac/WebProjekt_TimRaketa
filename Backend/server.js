@@ -1,10 +1,10 @@
 import express, { response } from 'express'
 import bodyParser from 'body-parser'
-import { pokdex } from './pokedex/pokedex.js'
+import { Pokedex } from './pokedex/pokedex.js'
 import fetch from 'node-fetch'
 
 const app = express();
-const pokedex = pokdex()
+const pokedex = Pokedex()
 
 app.use(bodyParser.json())
 
@@ -13,14 +13,18 @@ app.get('/', (req,res) => {
 })
 
 app.get('/pokedex/', (req,res)=> {
-    //console.log( pokedex.getAllPokemon() )
-    //res.send( pokedex.getAllPokemon() )
-    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=11`).then(
+    const promise = pokedex.getAllPokemon()
+    promise.then(
+        async (response) => {
+            res.status(200).send(response.results)
+        }
+    )
+    /* fetch(`https://pokeapi.co/api/v2/pokemon/?limit=11`).then(
         async (response) => {
             let data = await response.json()
             res.status(200).send(data.results)
         }
-    )
+    ) */
 })
 
 app.post('/signin', (req,res) => {
