@@ -1,12 +1,15 @@
 import express, { response } from 'express'
 import bodyParser from 'body-parser'
 import { Pokedex } from './pokedex/pokedex.js'
+import cors from 'cors'
 import fetch from 'node-fetch'
 
 const app = express();
 const pokedex = Pokedex()
+// const cors = cors();
 
 app.use(bodyParser.json())
+app.use(cors());
 
 app.get('/', (req,res) => {
     res.send(`Server connection working`)
