@@ -64,12 +64,10 @@ class Map extends Component {
 
     getAreaInfo = (area) => {
         let {selectedArea} = this.state
-        //FOR API CALL ON BACKEND USE SELECTEDAREA FROM STATE BECAUSE IT ACCEPTS ONLY THE AREA THAT IS HOVERED OVER
-        /* console.log(selectedArea) 
-        console.log("CLICKED AREA");
-        console.log(area)  */
+        //Safety rename to avoid api call fail for 2nd occurence of same location
+        let name = area.name === 'digletts-cave-2' ? 'digletts-cave' : area.name
         if(area.location === selectedArea){
-            fetch(`http://localhost:3000/map-area/${area.name}`)
+            fetch(`http://localhost:3000/map-area/${name}`)
             .then(
                 res => res.json()
             )
