@@ -33,7 +33,7 @@ app.get(`/map-area/:name`, (req,res) => {
     promise.then(
         async (response) => {
             let encounterablePokemon = areas.getPokemonEncounters(response)
-            res.send(encounterablePokemon)
+            res.send([... new Set(encounterablePokemon)])
         }
     )
 })
