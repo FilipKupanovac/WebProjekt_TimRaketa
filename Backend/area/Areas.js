@@ -1,5 +1,4 @@
 import fetch from 'node-fetch'
-import { response } from 'express'
 
 export const Areas = () => {
 

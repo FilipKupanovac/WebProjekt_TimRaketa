@@ -1,4 +1,4 @@
-import express, { response } from 'express'
+import express from 'express'
 import bodyParser from 'body-parser'
 import { Pokedex } from './pokedex/pokedex.js'
 import cors from 'cors'
@@ -32,7 +32,6 @@ app.get(`/map-area/:name`, (req,res) => {
     promise.then(
         async (response) => {
             let encounterablePokemon = areas.getPokemonEncounters(response)
-            console.log(response)
             res.send([... new Set(encounterablePokemon)])
         }
     )
