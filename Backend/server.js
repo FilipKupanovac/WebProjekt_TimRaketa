@@ -3,11 +3,13 @@ import bodyParser from 'body-parser'
 import { Pokedex } from './pokedex/pokedex.js'
 import cors from 'cors'
 import {Areas} from './area/Areas.js'
+import {Register} from './user-auth/register.js'
 
 const app = express();
 
 const pokedex = Pokedex()
 const areas = Areas()
+const register = Register()
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -37,13 +39,20 @@ app.get(`/map-area/:name`, (req,res) => {
     )
 })
 
+app.post('/register/:email/:password', (req,res) => {
+    let {email, password} = req.params;
+    const promise = register.tryRegister(email, password)
+
+    promise.then(
+        async (response) => {
+            console.log(response);
+            res.send(response)
+            }
+    )
+})
+
 app.post('/signin', (req,res) => {
-    if(
-        req.body.credentials.length >= 5
-        && req.body.password === "pokedex"
-        ){
-            res.json(`success`)
-    }
+    
 })
 
 app.listen(3000, () =>{

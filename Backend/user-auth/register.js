@@ -1,13 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
 
 
 export const Register = () => {
 
-    function tryRegister() {
-        //for mock register only requirements are username length > 5 and password = `pokedex`
-        let { email, username, password } = this.state;
+    async function tryRegister(email, password) {
 
         var firebaseConfig = {
             apiKey: "AIzaSyB3chaZc-TREtoMZAgRemjuUozwKXK5xn0",
@@ -19,29 +16,37 @@ export const Register = () => {
             measurementId: "G-B8L1LHXNWM"
         };
         var firebaseApp = initializeApp(firebaseConfig)
-        var analytics = getAnalytics(firebaseApp);
 
-        if (email !== '' && username.length > 5 && email.includes("@")) {
-            // this.props.loginUser(username);
-            // this.props.changeCurrentTab('pokedex')
+        if (email !== '' && email.includes("@")) {
             let auth = getAuth();
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed in 
-                    const email = userCredential.user.email;
-                    console.log(email);
-                    this.props.loginUser(email.split("@")[0]);
-                    this.props.changeCurrentTab('pokedex')
+            // try {
+                return createUserWithEmailAndPassword(auth, email, password)
+                .then(function (credentials) {
+                    return credentials.user
+                }, function (error) {
+                    return error
+                }
+                )
+                // .then(res => res.json())
+                // .then(res => {
+                //     return res
+                // })
 
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.log(errorMessage);
-                    // ..
-                });
+                // Signed in 
+                // const email_1 = userCredential.user.email;
+                // console.log(email_1);
+                //  userCredential
+            // } catch (error) {
+            //     const errorCode = error.code;
+            //     const errorMessage = error.message;
+            //     return errorMessage
+            // }
 
         }
+    }
+
+    return{
+        tryRegister
     }
 
 }
