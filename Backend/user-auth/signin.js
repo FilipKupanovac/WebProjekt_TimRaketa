@@ -19,7 +19,7 @@ export const SignIn = () => {
 
         if (email !== '' && email.includes("@")) {
             let auth = getAuth();
-                return signInWithEmailAndPassword(auth, email, password)
+            return signInWithEmailAndPassword(auth, email, password)
                 .then(function (credentials) {
                     return credentials.user
                 }, function (error) {
@@ -29,7 +29,7 @@ export const SignIn = () => {
         }
     }
 
-    return{
+    return {
         trySignIn
     }
 

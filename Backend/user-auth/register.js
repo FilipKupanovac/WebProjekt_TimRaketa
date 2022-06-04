@@ -19,33 +19,17 @@ export const Register = () => {
 
         if (email !== '' && email.includes("@")) {
             let auth = getAuth();
-            // try {
-                return createUserWithEmailAndPassword(auth, email, password)
+            return createUserWithEmailAndPassword(auth, email, password)
                 .then(function (credentials) {
                     return credentials.user
                 }, function (error) {
                     return error
                 }
                 )
-                // .then(res => res.json())
-                // .then(res => {
-                //     return res
-                // })
-
-                // Signed in 
-                // const email_1 = userCredential.user.email;
-                // console.log(email_1);
-                //  userCredential
-            // } catch (error) {
-            //     const errorCode = error.code;
-            //     const errorMessage = error.message;
-            //     return errorMessage
-            // }
-
         }
     }
 
-    return{
+    return {
         tryRegister
     }
 
