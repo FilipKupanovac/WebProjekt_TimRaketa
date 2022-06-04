@@ -352,3 +352,7 @@ a.repeat:hover {
 		opacity: 1;
 	}
 }
+
+#congrats-container{
+	height: 60px;
+}

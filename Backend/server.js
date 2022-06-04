@@ -2,7 +2,6 @@ import express, { response } from 'express'
 import bodyParser from 'body-parser'
 import { Pokedex } from './pokedex/pokedex.js'
 import cors from 'cors'
-import fetch from 'node-fetch'
 import {Areas} from './area/Areas.js'
 
 const app = express();

@@ -1,11 +1,10 @@
-//image of map, on hover show info about hovered part of map
 //info content: area name, area contents-gyms,markets,etc.
-
 //MISC
 import React, { Component } from 'react'
 import { kantoAreas } from '../kantoAreaNames'
 //Components
 import MapArea from './MapArea'
+import { serverBaseURL } from '../serverBaseURL'
 //CSS
 import '../CSS/Map.css'
 import '../CSS/kanto_grid_areas.css'
@@ -67,7 +66,7 @@ class Map extends Component {
         //Safety rename to avoid api call fail for 2nd occurence of same location
         let name = area.name === 'digletts-cave-2' ? 'digletts-cave' : area.name
         if(area.location === selectedArea){
-            fetch(`http://localhost:3000/map-area/${name}`)
+            fetch(`${serverBaseURL}/map-area/${name}`)
             .then(
                 res => res.json()
             )

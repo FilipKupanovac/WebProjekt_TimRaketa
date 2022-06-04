@@ -1,18 +1,13 @@
-//top: filter, searchbar, 
-//result: pokemon image, name, evoution tree, possible encounter area, height, weight
-
 //MISC
 import React, { Component } from 'react'
-
-//IF YOU DO NOT USE 'EXPORT DEFAULT' AT ORIGIN FILE, YOU MUST WRAP CONST INSIDE CURLY BRACKETS
-//import { mockPokedex } from '../mockPokedex'
 //Components
 import CardList from './CardList'
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
+import DetailsCard from './DetailsCard';
+import { serverBaseURL } from '../serverBaseURL';
 //CSS
 import '../CSS/Pokedex.css'
-import DetailsCard from './DetailsCard';
 
 class Pokedex extends Component {
   constructor() {
@@ -26,7 +21,7 @@ class Pokedex extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/pokedex/")
+    fetch(`${serverBaseURL}/pokedex/`)
       .then((resp) => resp.json())
       .then((resp) => {
         this.setState({ pokedex: resp });
