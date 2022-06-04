@@ -4,14 +4,12 @@ import React, { Component } from 'react';
 //CSS
 import '../CSS/Wtpmon.css'
 
-
 /**
  * Idea:
  * *Multiple input guesses
  * *For each wrong input show that guess in paragraphs .guess
  * *On button click check if name is correct
  * *If there are 5 wrong guesses, player loses game
- * 
  * 
  * *WILD IDEA: find some confetti burst animation and add it on correct guess
  */

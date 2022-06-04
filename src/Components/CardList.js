@@ -1,4 +1,6 @@
+//MISC
 import React from 'react';
+//Components
 import Card from './Card';
 
 const CardList = ({ pokemons, pickedId, pickPokemon }) => {

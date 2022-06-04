@@ -32,6 +32,7 @@ app.get(`/map-area/:name`, (req,res) => {
     promise.then(
         async (response) => {
             let encounterablePokemon = areas.getPokemonEncounters(response)
+            console.log(response)
             res.send([... new Set(encounterablePokemon)])
         }
     )

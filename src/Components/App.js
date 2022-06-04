@@ -8,9 +8,9 @@ import Signin from './SignIn'
 import Register from './Register'
 import UserProfile from './UserProfile';
 import WTPmon from './Wtpmon';
+import Favorites from './Favorites';
 //CSS
 import '../CSS/App.css';
-import Favorites from './Favorites';
 
 /*TODO
  *class has to remember user data- login status (logged in or not)-additional renderings according to login status

@@ -124,7 +124,7 @@ export const kantoAreas = {
             "name": "kanto-route-23",
             "location": "Route 23",
             "subareas": [{
-                "name": "kanto-victory-road-1",
+                "name": "kanto-victory-road-2",
                 "location": "Victory Road",
             }]
         },

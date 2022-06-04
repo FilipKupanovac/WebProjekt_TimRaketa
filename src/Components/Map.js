@@ -1,8 +1,8 @@
 //info content: area name, area contents-gyms,markets,etc.
 //MISC
 import React, { Component } from 'react'
-import { kantoAreas } from '../kantoAreaNames'
 //Components
+import { kantoAreas } from '../kantoAreaNames'
 import MapArea from './MapArea'
 import { serverBaseURL } from '../serverBaseURL'
 //CSS

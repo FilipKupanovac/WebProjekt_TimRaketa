@@ -5,13 +5,6 @@ import React, { Component } from 'react'
 //CSS
 import '../CSS/DetailsCard.css'
 
-/** TODO
- * 
- * ADD STYLING TO THE CARD IN CARD.CSS FILE
- * 
- * ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
- */
-
 class DetailsCard extends Component {
 
   constructor(props) {
@@ -75,7 +68,6 @@ class DetailsCard extends Component {
 
   render() {
     var { pokemon, id, areas, types, isFavorite, evolutionChain } = this.state;
-    console.log(evolutionChain);
     return (
       <div className='tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
         {/* <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2> */}

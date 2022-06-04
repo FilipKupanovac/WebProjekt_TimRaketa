@@ -58,7 +58,6 @@ class Register extends Component {
     }
 
     onInputChange = (key, event) => {
-        console.log(`SET ${key} as: ${event.target.value}`)
         this.setState({ [key]: event.target.value })
     }
 }
