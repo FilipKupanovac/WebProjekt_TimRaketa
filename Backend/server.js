@@ -4,12 +4,14 @@ import { Pokedex } from './pokedex/pokedex.js'
 import cors from 'cors'
 import {Areas} from './area/Areas.js'
 import {Register} from './user-auth/register.js'
+import {SignIn} from './user-auth/signin.js'
 
 const app = express();
 
 const pokedex = Pokedex()
 const areas = Areas()
 const register = Register()
+const signin = SignIn()
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -51,8 +53,17 @@ app.post('/register/:email/:password', (req,res) => {
     )
 })
 
-app.post('/signin', (req,res) => {
-    
+app.post('/signin/:email/:password', (req,res) => {
+    let {email, password} = req.params;
+    const promise = signin.trySignIn(email, password)
+
+    promise.then(
+        async (response) => {
+            console.log(response);
+            res.send(response)
+            }
+    )
+
 })
 
 app.listen(3000, () =>{

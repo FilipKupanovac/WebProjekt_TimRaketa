@@ -76,7 +76,6 @@ class Register extends Component {
   
                   }
               });
-
     }
 
     onInputChange = (key, event) => {
