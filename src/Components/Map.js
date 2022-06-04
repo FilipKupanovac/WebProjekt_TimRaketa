@@ -67,25 +67,14 @@ class Map extends Component {
         //FOR API CALL ON BACKEND USE SELECTEDAREA FROM STATE BECAUSE IT ACCEPTS ONLY THE AREA THAT IS HOVERED OVER
         /* console.log(selectedArea) 
         console.log("CLICKED AREA");
-        console.log(area) */
-        fetch(`https://pokeapi.co/api/v2/location-area/${area.name}/`)
-            .then(Response => Response.json())
-            .then(res => {
-                let encounters = res.pokemon_encounters;
-                let fireredPokemon = encounters.filter(encounter =>{
-                    let isFirered = false;
-                    encounter.version_details.forEach(version =>{
-                        if(version.version.name === 'firered'){
-                            isFirered=true;
-                        }
-                    })
-                    return isFirered
-                })
-                let names = fireredPokemon.map(element => {
-                    return element.pokemon.name
-                })
-                this.setState({pokemon_encounters : names});
-            })
+        console.log(area)  */
+        if(area.location === selectedArea){
+            fetch(`http://localhost:3000/map-area/${area.name}`)
+            .then(
+                res => res.json()
+            )
+            .then(res => this.setState({pokemon_encounters: res}))
+        }
     }
 }
 
