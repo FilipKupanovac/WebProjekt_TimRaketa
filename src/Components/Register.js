@@ -27,12 +27,6 @@ class Register extends Component {
                     ></input>
                 </div>
                 <div className="flexi form-w space-between">
-                    <p>Username</p>
-                    <input type="text" placeholder="enter your username"
-                        onChange={(event) => { this.onInputChange(`username`, event) }}
-                    ></input>
-                </div>
-                <div className="flexi form-w space-between">
                     <p>Password</p>
                     <input type="password" placeholder="enter your password"
                         onChange={(event) => { this.onInputChange(`password`, event) }}
@@ -51,7 +45,7 @@ class Register extends Component {
     }
 
     tryRegister = () => {
-        let { email, username, password } = this.state;
+        let { email, password } = this.state;
         console.log(email);
         fetch(`${serverBaseURL}/register/${email}/${password}`, {
             method: 'POST',

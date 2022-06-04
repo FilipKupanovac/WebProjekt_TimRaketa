@@ -20,8 +20,8 @@ class Signin extends Component {
             <div className="tc">
                 <h1>Sign in</h1>
                 <div className="flexi form-w space-between">
-                    <p>Username</p>
-                    <input type="text" placeholder="enter your username or email"
+                    <p>Email</p>
+                    <input type="text" placeholder="enter your email"
                         onChange={(event) => { this.onInputChange(`credentials`, event) }}
                     ></input>
                 </div>
