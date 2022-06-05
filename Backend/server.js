@@ -47,7 +47,6 @@ app.get(`/encounters/:id`, (req,res) => {
 
     promise.then(
         async (locationAreasArray) => {
-            console.log(locationAreasArray);
             let locations = pokedex.parseLocationNames(locationAreasArray)
             res.status(200).send([... new Set(locations)])
         }

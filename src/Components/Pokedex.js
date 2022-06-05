@@ -10,8 +10,8 @@ import { serverBaseURL } from '../serverBaseURL';
 import '../CSS/Pokedex.css'
 
 class Pokedex extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       pokedex: [],
       haveRendered: false,
@@ -45,7 +45,8 @@ class Pokedex extends Component {
   };
 
   render() {
-    var { pickedId, pokedex } = this.state;
+    let { pickedId, pokedex } = this.state;
+    let { signedIn } = this.props;
     return (
       <div className="tc">
         <h1 className="f1">Pokémon</h1>
@@ -63,6 +64,7 @@ class Pokedex extends Component {
             key={pickedId}
             id={pickedId}
             pokemon={pokedex[pickedId - 1]}
+            signedIn={signedIn}
             //TO BE CHANGED ON DB IMPLEMENTATION
             isFavorite={false}
           />

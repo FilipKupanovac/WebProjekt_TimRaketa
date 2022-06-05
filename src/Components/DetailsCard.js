@@ -59,19 +59,25 @@ class DetailsCard extends Component {
 
 
   render() {
-    var { pokemon, id, areas, types, isFavorite, evolutionChain } = this.state;
+    let { pokemon, id, areas, types, isFavorite, evolutionChain } = this.state;
+    let { signedIn } = this.props;
     return (
       <div className='tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
         <div className="info-container">
           <div className="icon-container">
-            <img src={
-              isFavorite ? "https://cdn-icons-png.flaticon.com/512/1828/1828614.png"
-                : "https://cdn-icons-png.flaticon.com/512/1828/1828970.png"
+            {
+              signedIn 
+              ?
+                <img src={
+                  isFavorite ? "https://cdn-icons-png.flaticon.com/512/1828/1828614.png"
+                    : "https://cdn-icons-png.flaticon.com/512/1828/1828970.png"
+                }
+                  alt='star'
+                  className='favorite-icon'
+                  onClick={this.toggleIsFavorite}
+                />
+              : <></>
             }
-              alt='star'
-              className='favorite-icon'
-              onClick={this.toggleIsFavorite}
-            />
           </div>
           <div className="icon-container">
             <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2>

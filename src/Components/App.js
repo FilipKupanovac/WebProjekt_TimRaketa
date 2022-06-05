@@ -35,9 +35,9 @@ class App extends Component {
 
   //METHODS LIKE THIS ONE CAN NOT CHANGE STATE OF COMPONENT FOR SAFETY REASONS BECAUSE THEY ARE RUN INSIDE RENDER METHOD -> WOULD LEAD TO AN INFINITE LOOP - react throws error itself, this is just a notice
   displayCurrentTab = () => {
-    let { currentTab, username } = this.state;
+    let { currentTab, username, signedIn } = this.state;
     switch (currentTab) {
-      case `pokedex`: return <Pokedex />
+      case `pokedex`: return <Pokedex signedIn={signedIn}/>
       case `map`: return <Map />
       case `wtpmon`: return <WTPmon />
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
