@@ -1,10 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
-export const Register = () => {
+export const SignIn = () => {
 
-    async function tryRegister(email, password) {
+    async function trySignIn(email, password) {
 
         var firebaseConfig = {
             apiKey: "AIzaSyB3chaZc-TREtoMZAgRemjuUozwKXK5xn0",
@@ -19,7 +19,7 @@ export const Register = () => {
 
         if (email !== '' && email.includes("@")) {
             let auth = getAuth();
-            return createUserWithEmailAndPassword(auth, email, password)
+            return signInWithEmailAndPassword(auth, email, password)
                 .then(function (credentials) {
                     return credentials.user
                 }, function (error) {
@@ -30,7 +30,7 @@ export const Register = () => {
     }
 
     return {
-        tryRegister
+        trySignIn
     }
 
 }

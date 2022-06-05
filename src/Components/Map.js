@@ -48,7 +48,7 @@ class Map extends Component {
                     </div>
                 </div>
                 {
-                    pokemon_encounters.map((pokemon,i) => {
+                    pokemon_encounters.map((pokemon, i) => {
                         return <p key={i}>{pokemon}</p>
                     })
                 }
@@ -62,15 +62,15 @@ class Map extends Component {
     }
 
     getAreaInfo = (area) => {
-        let {selectedArea} = this.state
+        let { selectedArea } = this.state
         //Safety rename to avoid api call fail for 2nd occurence of same location
         let name = area.name === 'digletts-cave-2' ? 'digletts-cave' : area.name
-        if(area.location === selectedArea){
+        if (area.location === selectedArea) {
             fetch(`${serverBaseURL}/map-area/${name}`)
-            .then(
-                res => res.json()
-            )
-            .then(res => this.setState({pokemon_encounters: res}))
+                .then(
+                    res => res.json()
+                )
+                .then(res => this.setState({ pokemon_encounters: res }))
         }
     }
 }

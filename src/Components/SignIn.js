@@ -1,5 +1,7 @@
 //sign in, (username || email) && password
 import React, { Component } from 'react'
+import { serverBaseURL } from '../serverBaseURL'
+
 //Components
 
 //CSS
@@ -18,8 +20,8 @@ class Signin extends Component {
             <div className="tc">
                 <h1>Sign in</h1>
                 <div className="flexi form-w space-between">
-                    <p>Username</p>
-                    <input type="text" placeholder="enter your username or email"
+                    <p>Email</p>
+                    <input type="text" placeholder="enter your email"
                         onChange={(event) => { this.onInputChange(`credentials`, event) }}
                     ></input>
                 </div>
@@ -42,12 +44,30 @@ class Signin extends Component {
     }
 
     trySignin = () => {
-        //for mock signin only requirements are credentials length > 5 and password = `pokedex`
         let { credentials, password } = this.state;
-        if (credentials.length > 5 && password === 'pokedex') {
-            this.props.loginUser(credentials);
-            this.props.changeCurrentTab('pokedex')
-        }
+        fetch(`${serverBaseURL}/signin/${credentials}/${password}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ a: 7, str: 'Some string: &=&' })
+        }).then(res => res.json())
+            .then(res => {
+                if (res.name === "FirebaseError") {
+                    alert(res.code)
+                } else {
+                    try {
+                        console.log(res);
+                        this.props.loginUser(res.email.split("@")[0])
+                        this.props.changeCurrentTab("pokedex")
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+
+                }
+            });
     }
 
     onInputChange = (key, event) => {

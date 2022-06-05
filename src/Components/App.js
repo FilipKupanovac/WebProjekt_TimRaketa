@@ -43,7 +43,7 @@ class App extends Component {
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
       case `register`: return <Register changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />
       case `profile`: return <UserProfile username={username} />
-      case `favorites`: return <Favorites username={username}/>
+      case `favorites`: return <Favorites username={username} />
       default: return <h1>odjava</h1>
     }
   }
