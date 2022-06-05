@@ -37,6 +37,19 @@ app.get(`/map-area/:name`, (req,res) => {
     )
 })
 
+app.get(`/encounters/:id`, (req,res) => {
+    let {id} = req.params;
+    const promise = pokedex.getPokemonEncounterAreas(id)
+
+    promise.then(
+        async (locationAreasArray) => {
+            console.log(locationAreasArray);
+            let locations = pokedex.parseLocationNames(locationAreasArray)
+            res.status(200).send([... new Set(locations)])
+        }
+    )
+})
+
 app.post('/signin', (req,res) => {
     if(
         req.body.credentials.length >= 5

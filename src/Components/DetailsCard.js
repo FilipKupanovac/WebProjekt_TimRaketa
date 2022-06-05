@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 //CSS
 import '../CSS/DetailsCard.css'
+import { serverBaseURL } from '../serverBaseURL'
+import { kantoAreas } from '../kantoAreaNames'
 
 class DetailsCard extends Component {
 
@@ -11,7 +13,8 @@ class DetailsCard extends Component {
     super(props)
     this.state = {
       pokemon: this.props.pokemon,
-      id: this.props.id,
+      id: this.extractNumberFromPokemon(this.props.pokemon),
+      baseGameLocations: this.extractBaseGameLocations(),
       isFavorite: this.props.isFavorite,
       evolutionChain: [],
       areas: [],
@@ -20,28 +23,18 @@ class DetailsCard extends Component {
   }
 
   componentDidMount() {
-    //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
-    //idea: use expanded view when pokemon is clicked to show detailed info about it
-    var { areas, id, pokemon } = this.state
-    this.setState({ id: this.extractNumberFromPokemon(pokemon) })
+    var { id, pokemon, baseGameLocations } = this.state
 
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
-      .then(resp => resp.json())
-      .then(resp => {
-        //eslint-disable-next-line
-        areas = resp.filter(area => {
-          var foundEncounterArea = false;
-          area.version_details.forEach(element => {
-            if (element.version.name === 'firered')
-              foundEncounterArea = true;
-          });
-          if (foundEncounterArea === true) {
-            return area;
-          }
-
-        })
-        this.setState({ areas: areas })
+    fetch(`${serverBaseURL}/encounters/${id}`).then(
+      res => res.json()
+    )
+    .then(res => {
+      let areas = res.filter(area => {
+        if(baseGameLocations.includes(area))
+          return area;
       })
+      this.setState({areas : areas})
+    })
 
     //get pokemon types
     fetch(pokemon.url)
@@ -70,7 +63,6 @@ class DetailsCard extends Component {
     var { pokemon, id, areas, types, isFavorite, evolutionChain } = this.state;
     return (
       <div className='tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 card detailed'>
-        {/* <h2>#{id} {this.capitalizeFirstLetter(pokemon.name)}</h2> */}
         <div className="info-container">
           <div className="icon-container">
             <img src={
@@ -136,7 +128,7 @@ class DetailsCard extends Component {
           {
             areas.map((location, i) => {
               return (
-                <p key={i}>{this.prepareLocationNameForRender(location.location_area.name)}</p>
+                <p key={i}>{this.prepareLocationNameForRender(location)}</p>
               )
             })
           }
@@ -180,6 +172,17 @@ class DetailsCard extends Component {
   extractNumberFromPokemon = (pokemon) => {
     var tempArray = pokemon.url.split("/")
     return tempArray[6]
+  }
+
+  extractBaseGameLocations = () => {
+    let locations = []
+    kantoAreas.areas.forEach(area =>{
+      locations.push(area.name)
+      area.subareas?.forEach(subarea => {
+        locations.push(subarea.name)
+      })
+    })
+    return locations;
   }
 
   handleTypesDisplay = (type) => {
