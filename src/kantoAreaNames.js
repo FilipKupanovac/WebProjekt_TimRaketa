@@ -9,7 +9,7 @@ export const kantoAreas = {
             "location": "Route 2",
             "subareas":[
                 {
-                    "name":"digletts-cave-2",//PRIPAZITI KOD API CALLA, treba maknuti -2
+                    "name":"digletts-cave-2",
                     "location": "Digglet's cave",
                 },
                 {

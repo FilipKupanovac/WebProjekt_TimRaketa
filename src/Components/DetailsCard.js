@@ -1,11 +1,10 @@
 //MISC
 import React, { Component } from 'react'
 //Components
-
+import { kantoAreas } from '../kantoAreaNames'
+import { serverBaseURL } from '../serverBaseURL'
 //CSS
 import '../CSS/DetailsCard.css'
-import { serverBaseURL } from '../serverBaseURL'
-import { kantoAreas } from '../kantoAreaNames'
 
 class DetailsCard extends Component {
 
@@ -32,11 +31,12 @@ class DetailsCard extends Component {
       let areas = res.filter(area => {
         if(baseGameLocations.includes(area))
           return area;
+        else return false;
       })
       this.setState({areas : areas})
     })
 
-    //get pokemon types
+    //set pokemon types
     fetch(pokemon.url)
       .then(resp => resp.json())
       .then(resp => {
@@ -49,7 +49,6 @@ class DetailsCard extends Component {
         fetch(resp.evolution_chain.url)
           .then(resp => resp.json())
           .then(resp => {
-            // tempEvolutions.push(resp.chain.species.url.split("/")[6])
             var temp = this.fillEvolutionChain(resp.chain).filter((value) => {
               return value > 0 && value < 152
             })
