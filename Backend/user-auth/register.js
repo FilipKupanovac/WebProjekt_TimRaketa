@@ -11,6 +11,7 @@ export const Register = () => {
             authDomain: "pokedex-4235c.firebaseapp.com",
             projectId: "pokedex-4235c",
             storageBucket: "pokedex-4235c.appspot.com",
+            databaseURL: "https://pokedex-4235c-default-rtdb.europe-west1.firebasedatabase.app/",
             messagingSenderId: "873604095463",
             appId: "1:873604095463:web:91252982f92892a26db142",
             measurementId: "G-B8L1LHXNWM"

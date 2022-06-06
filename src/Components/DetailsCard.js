@@ -27,14 +27,14 @@ class DetailsCard extends Component {
     fetch(`${serverBaseURL}/encounters/${id}`).then(
       res => res.json()
     )
-    .then(res => {
-      let areas = res.filter(area => {
-        if(baseGameLocations.includes(area))
-          return area;
-        else return false;
+      .then(res => {
+        let areas = res.filter(area => {
+          if (baseGameLocations.includes(area))
+            return area;
+          else return false;
+        })
+        this.setState({ areas: areas })
       })
-      this.setState({areas : areas})
-    })
 
     //set pokemon types
     fetch(pokemon.url)
@@ -66,8 +66,8 @@ class DetailsCard extends Component {
         <div className="info-container">
           <div className="icon-container">
             {
-              signedIn 
-              ?
+              signedIn
+                ?
                 <img src={
                   isFavorite ? "https://cdn-icons-png.flaticon.com/512/1828/1828614.png"
                     : "https://cdn-icons-png.flaticon.com/512/1828/1828970.png"
@@ -76,7 +76,7 @@ class DetailsCard extends Component {
                   className='favorite-icon'
                   onClick={this.toggleIsFavorite}
                 />
-              : <></>
+                : <></>
             }
           </div>
           <div className="icon-container">
@@ -158,8 +158,56 @@ class DetailsCard extends Component {
   }
 
   toggleIsFavorite = () => {
-    var { isFavorite } = this.state
-    this.setState({ isFavorite: isFavorite ? false : true })
+    var { isFavorite, id } = this.state
+    fetch(`${serverBaseURL}/get-favorites/${this.props.username}`)
+      .then(
+        res => res.json()
+      )
+      .then(res => {
+        console.log(this.props.username);
+        console.log(res);
+
+        let favorites = this.handleFavoritesResponse(res.favorites)
+        let newArray = new Array()
+        favorites.forEach(favorite => {
+          newArray.push(favorite)
+        })
+        // favorites.push(id)
+        if (!isFavorite) {
+          this.setState({isFavorite: true})
+          newArray.push(id)
+        } else {
+          newArray = newArray.filter(element => {
+            if (element === this.extractNumberFromPokemon(this.props.pokemon)) {
+              this.setState({isFavorite: false})
+              return false
+            } else {
+              return true
+            }
+          })
+        }
+
+        newArray.sort(function (a, b) {
+          return a - b
+        })
+        newArray = [... new Set(newArray)]
+
+        fetch(`${serverBaseURL}/put-favorites/${this.props.username}/${newArray}`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ a: 7, str: 'Some string: &=&' })
+        })
+        this.props.updateFavorites(newArray)
+
+      })
+    // this.setState({ isFavorite: isFavorite ? false : true })
+  }
+
+  handleFavoritesResponse = (responseString) => {
+    return responseString?.split(",")
   }
 
   prepareLocationNameForRender = (locationName) => {
@@ -181,7 +229,7 @@ class DetailsCard extends Component {
 
   extractBaseGameLocations = () => {
     let locations = []
-    kantoAreas.areas.forEach(area =>{
+    kantoAreas.areas.forEach(area => {
       locations.push(area.name)
       area.subareas?.forEach(subarea => {
         locations.push(subarea.name)
@@ -232,7 +280,6 @@ class DetailsCard extends Component {
       // code block
     }
   }
-
 }
 
 export default DetailsCard;

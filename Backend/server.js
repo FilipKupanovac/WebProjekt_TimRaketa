@@ -5,6 +5,7 @@ import cors from 'cors'
 import { Areas } from './area/Areas.js'
 import { Register } from './user-auth/register.js'
 import { SignIn } from './user-auth/signin.js'
+import { Database } from './database/database.js'
 
 const app = express();
 
@@ -12,6 +13,7 @@ const pokedex = Pokedex()
 const areas = Areas()
 const register = Register()
 const signin = SignIn()
+const database = Database()
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -41,8 +43,8 @@ app.get(`/map-area/:name`, (req, res) => {
     )
 })
 
-app.get(`/encounters/:id`, (req,res) => {
-    let {id} = req.params;
+app.get(`/encounters/:id`, (req, res) => {
+    let { id } = req.params;
     const promise = pokedex.getPokemonEncounterAreas(id)
 
     promise.then(
@@ -77,6 +79,29 @@ app.post('/signin/:email/:password', (req, res) => {
     )
 
 })
+
+app.post('/put-favorites/:email/:pokemons', (req, res) => {
+    let { email, pokemons } = req.params;
+    const promise = database.putFavorites(email, pokemons)
+
+    promise.then(
+        async (response) => {
+            res.send(response)
+        }
+    )
+})
+
+app.get('/get-favorites/:email', (req, res) => {
+    let { email } = req.params;
+    const promise = database.getFavorites(email)
+
+    promise.then(
+        async (response) => {
+            res.send(response)
+        }
+    )
+})
+
 
 app.listen(3000, () => {
     console.log("Listening on port 3000...")

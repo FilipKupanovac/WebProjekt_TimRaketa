@@ -14,6 +14,7 @@ class Pokedex extends Component {
     super(props);
     this.state = {
       pokedex: [],
+      favorites: [],
       haveRendered: false,
       searchfield: "",
       pickedId: undefined,
@@ -26,6 +27,24 @@ class Pokedex extends Component {
       .then((resp) => {
         this.setState({ pokedex: resp });
       });
+
+    fetch(`${serverBaseURL}/get-favorites/${this.props.username}`)
+      .then((resp) =>
+        resp.json()
+      )
+      .then((resp) => {
+        console.log(resp);
+        let tempArray = this.handleFavoritesResponse(resp.favorites)
+        this.setState({ favorites: tempArray });
+      });
+  }
+
+  updateFavorites = (newFavorites) => {
+    this.setState({favorites: newFavorites})
+  }
+
+  handleFavoritesResponse = (responseString) => {
+    return responseString.split(",")
   }
 
   onSearchChange = (event) => {
@@ -45,7 +64,7 @@ class Pokedex extends Component {
   };
 
   render() {
-    let { pickedId, pokedex } = this.state;
+    let { pickedId, pokedex, favorites } = this.state;
     let { signedIn } = this.props;
     return (
       <div className="tc">
@@ -65,8 +84,9 @@ class Pokedex extends Component {
             id={pickedId}
             pokemon={pokedex[pickedId - 1]}
             signedIn={signedIn}
-            //TO BE CHANGED ON DB IMPLEMENTATION
-            isFavorite={false}
+            username={this.props.username}
+            isFavorite={favorites?.includes(pickedId) ? true : false}
+            updateFavorites={this.updateFavorites}
           />
         ) : (
           <></>

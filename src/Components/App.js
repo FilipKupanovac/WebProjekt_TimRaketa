@@ -37,7 +37,7 @@ class App extends Component {
   displayCurrentTab = () => {
     let { currentTab, username, signedIn } = this.state;
     switch (currentTab) {
-      case `pokedex`: return <Pokedex signedIn={signedIn}/>
+      case `pokedex`: return <Pokedex signedIn={signedIn} username={username}/>
       case `map`: return <Map />
       case `wtpmon`: return <WTPmon />
       case `signin`: return <Signin changeCurrentTab={this.changeCurrentTab} loginUser={this.loginUser} />

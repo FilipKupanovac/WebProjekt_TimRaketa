@@ -8,7 +8,7 @@ class Favorites extends Component{
     constructor(props){
         super(props);
         this.state={
-            username: this.props.username
+            username: this.props.username,
         }
     }
     componentDidMount(){
@@ -16,9 +16,10 @@ class Favorites extends Component{
         this.setState({pokemons: mockPokedex.results})
     }
 
+
+
     render(){
         let {username, pokemons} = this.state;
-
         return(
             <>
                 <p>{username}</p>

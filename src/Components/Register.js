@@ -61,7 +61,7 @@ class Register extends Component {
                 } else {
                     try {
                         console.log(res);
-                        this.props.loginUser(res.email.split("@")[0])
+                        this.props.loginUser(res.email)
                         this.props.changeCurrentTab("pokedex")
                     }
                     catch (error) {
