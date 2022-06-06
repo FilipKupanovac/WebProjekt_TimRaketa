@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import CardList from './CardList';
 import { serverBaseURL } from '../serverBaseURL'
 import SearchBox from './SearchBox';
-import Scroll from './Scroll';
 import DetailsCard from './DetailsCard';
 
 class Favorites extends Component {
@@ -22,7 +21,6 @@ class Favorites extends Component {
         fetch(`${serverBaseURL}/get-favorites/${this.props.username}`)
             .then(async (resp) => await resp.json())
             .then((resp) => {
-                let favorites = resp
                 let tempArray = this.handleFavoritesResponse(resp.favorites)
                 fetch(`${serverBaseURL}/pokedex/`)
                     .then(async (resp) => await resp.json())
@@ -52,16 +50,14 @@ class Favorites extends Component {
         console.log("picked id: " + pickedId);
         return (
             <div className="tc">
-                <h1 className="f1">Pokémon</h1>
+                <h1 className="f1">Your favorite Pokémon</h1>
                 <SearchBox searchChange={this.onSearchChange} />
-                <Scroll>
-                    <CardList
-                        pokemons={favorites}
-                        pickedId={pickedId}
-                        pickPokemon={this.pickPokemon}
-                    />
-                </Scroll>
-
+                <CardList
+                    pokemons={favorites}
+                    pickedId={pickedId}
+                    pickPokemon={this.pickPokemon}
+                />
+                <hr></hr>
                 {pickedId !== undefined ? (
                     <DetailsCard
                         key={pickedId}

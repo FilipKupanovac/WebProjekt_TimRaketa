@@ -168,11 +168,10 @@ class DetailsCard extends Component {
         console.log(res);
 
         let favorites = this.handleFavoritesResponse(res.favorites)
-        let newArray = new Array()
+        let newArray = []
         favorites.forEach(favorite => {
           newArray.push(favorite)
         })
-        // favorites.push(id)
         if (!isFavorite) {
           this.setState({isFavorite: true})
           newArray.push(id)
@@ -190,7 +189,7 @@ class DetailsCard extends Component {
         newArray.sort(function (a, b) {
           return a - b
         })
-        newArray = [... new Set(newArray)]
+        newArray = [...new Set(newArray)]
 
         fetch(`${serverBaseURL}/put-favorites/${this.props.username}/${newArray}`, {
           method: 'POST',
