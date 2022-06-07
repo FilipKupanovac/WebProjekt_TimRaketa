@@ -42,7 +42,7 @@ export const Database = () => {
                 console.log(snapshot.val());
                 return snapshot.val()
             } else {
-                console.log("No data available");
+                console.log("No data available from put");
             }
         }).catch((error) => {
             console.error(error);

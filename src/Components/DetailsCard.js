@@ -165,33 +165,56 @@ class DetailsCard extends Component {
       )
       .then(res => {
         console.log(this.props.username);
-        console.log(res);
-
-        let favorites = this.handleFavoritesResponse(res.favorites)
+        // console.log(res);
         let newArray = []
-        favorites.forEach(favorite => {
-          newArray.push(favorite)
-        })
-        if (!isFavorite) {
-          this.setState({isFavorite: true})
-          newArray.push(id)
-        } else {
+        if (res.length !== 0) {
+
+          let favorites = this.handleFavoritesResponse(res.favorites)
+          favorites.forEach(favorite => {
+            newArray.push(favorite)
+          })
           newArray = newArray.filter(element => {
-            if (element === this.extractNumberFromPokemon(this.props.pokemon)) {
-              this.setState({isFavorite: false})
+            if (element === "undefined") {
               return false
             } else {
               return true
             }
           })
+          if (!isFavorite) {
+            this.setState({ isFavorite: true })
+            newArray.push(id)
+          } else {
+            newArray = newArray.filter(element => {
+              if (element === this.extractNumberFromPokemon(this.props.pokemon)) {
+                this.setState({ isFavorite: false })
+                return false
+              } else {
+                return true
+              }
+            })
+          }
+
+          newArray.sort(function (a, b) {
+            return a - b
+          })
+          newArray = [...new Set(newArray)]
+        } else {
+          if (!isFavorite) {
+            this.setState({ isFavorite: true })
+            newArray.push(id)
+          } else {
+            newArray = newArray.filter(element => {
+              if (element === this.extractNumberFromPokemon(this.props.pokemon)) {
+                this.setState({ isFavorite: false })
+                return false
+              } else {
+                return true
+              }
+            })
+          }
         }
 
-        newArray.sort(function (a, b) {
-          return a - b
-        })
-        newArray = [...new Set(newArray)]
-
-        fetch(`${serverBaseURL}/put-favorites/${this.props.username}/${newArray}`, {
+        fetch(`${serverBaseURL}/put-favorites/${this.props.username}/${newArray.length !== 0 ? newArray : undefined}`, {
           method: 'POST',
           headers: {
             'Accept': 'application/json, text/plain, */*',

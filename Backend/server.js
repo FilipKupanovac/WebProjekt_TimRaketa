@@ -91,6 +91,17 @@ app.post('/put-favorites/:email/:pokemons', (req, res) => {
     )
 })
 
+// app.post('/put-favorites/:email', (req, res) => {
+//     let { email } = req.params;
+//     const promise = database.putFavorites(email, "undefined")
+
+//     promise.then(
+//         async (response) => {
+//             res.send(response)
+//         }
+//     )
+// })
+
 app.get('/get-favorites/:email', (req, res) => {
     let { email } = req.params;
     const promise = database.getFavorites(email)

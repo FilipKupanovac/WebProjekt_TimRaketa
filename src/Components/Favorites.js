@@ -14,24 +14,31 @@ class Favorites extends Component {
             pokedex: [],
             pickedId: undefined,
             username: this.props.username,
-            favorites: []
+            favorites: [],
+            favoritesID: []
         }
     }
     componentDidMount() {
+        this.initUI()
+    }
+
+    initUI = () => {
         fetch(`${serverBaseURL}/get-favorites/${this.props.username}`)
             .then(async (resp) => await resp.json())
             .then((resp) => {
-                let tempArray = this.handleFavoritesResponse(resp.favorites)
-                fetch(`${serverBaseURL}/pokedex/`)
-                    .then(async (resp) => await resp.json())
-                    .then((resp) => {
-                        let allPokemons = resp
-                        var finalTempArray = []
-                        tempArray.forEach(element => {
-                            finalTempArray.push(resp[element - 1])
-                        })
-                        this.setState({ favorites: finalTempArray, pokedex: allPokemons })
-                    });
+                if (resp.favorites !== "undefined") {
+                    let tempArray = this.handleFavoritesResponse(resp.favorites)
+                    fetch(`${serverBaseURL}/pokedex/`)
+                        .then(async (resp) => await resp.json())
+                        .then((resp) => {
+                            let allPokemons = resp
+                            var finalTempArray = []
+                            tempArray.forEach(element => {
+                                finalTempArray.push(resp[element - 1])
+                            })
+                            this.setState({ favorites: finalTempArray, pokedex: allPokemons, favoritesID: tempArray })
+                        });
+                }
             });
     }
 
@@ -39,19 +46,35 @@ class Favorites extends Component {
         return responseString?.split(",")
     }
 
+    extractNumberFromPokemon = (pokemon) => {
+        var tempArray = pokemon.url.split("/")
+        return tempArray[6]
+    }
+
     pickPokemon = (pokeNumber) => {
         this.setState({ pickedId: pokeNumber });
     };
 
+    updateFavorites = (newFavorites) => {
+        var { pokedex } = this.state
+        this.setState({ favoritesID: newFavorites, pickedId: undefined })
+        var tempArray = []
+        newFavorites.forEach(element => {
+            tempArray.push(pokedex[element - 1])
+        })
+        this.setState({ favorites: tempArray })
+        console.log(tempArray);
+    }
+
     render() {
-        let { pickedId, favorites, pokedex } = this.state;
+        let { pickedId, favorites, favoritesID, pokedex } = this.state;
         let { signedIn } = this.props;
-        console.log("picked id: " + pickedId);
-        console.log("picked id: " + pickedId);
         return (
             <div className="tc">
                 <h1 className="f1">Your favorite Pokémon</h1>
-                <SearchBox searchChange={this.onSearchChange} />
+                {favoritesID !== "undefined" && favorites.length === 0
+                    ? <h3>You have no favorite pokemon.</h3>
+                    : <SearchBox searchChange={this.onSearchChange} />}
                 <CardList
                     pokemons={favorites}
                     pickedId={pickedId}
@@ -65,7 +88,8 @@ class Favorites extends Component {
                         pokemon={pokedex[pickedId - 1]}
                         signedIn={signedIn}
                         username={this.props.username}
-                        isFavorite={favorites?.includes(pickedId) ? true : false}
+                        isFavorite={favoritesID.includes(pickedId)}
+                        updateFavorites={this.updateFavorites}
                     />
                 ) : (
                     <></>
