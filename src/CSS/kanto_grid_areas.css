@@ -1,118 +1,118 @@
-#kanto-route-1-area {
+#kanto-route-1 {
     grid-area: 9 / 3 / 11 / 3;
 }
 
-#kanto-route-2-north-towards-pewter-city {
+#kanto-route-2 {
     grid-area: 5 / 3 / 8 / 3;
     display: grid;
     grid-template-columns: 20% 7.1% 42.9% 6.4% 23.6%;
     grid-template-rows: 10.4% 13.5% 17.2% 19% 39.9%;
 }
 
-#kanto-route-3-area {
+#kanto-route-3 {
     grid-area: 4 / 4 / 5 / 8;
 }
 
-#kanto-route-4-area {
+#kanto-route-4 {
     grid-area: 3 / 7 / 4 / 13;
     display: grid;
     grid-template-columns: 20.9% 9.7% 69.4%;
     grid-template-rows: 21.8% 54.6% 23.6%;
 }
 
-#kanto-route-5-area {
+#kanto-route-5 {
     grid-area: 4 / 13 / 6 / 14;
 }
 
-#kanto-route-6-area {
+#kanto-route-6 {
     grid-area: 7 / 13 / 9 / 14;
 }
 
-#kanto-route-7-area {
+#kanto-route-7 {
     grid-area: 6 / 11 / 7 / 13;
 }
 
-#kanto-route-8-area {
+#kanto-route-8 {
     grid-area: 6 / 14 / 7 / 17;
 }
 
-#kanto-route-9-area {
+#kanto-route-9 {
     grid-area: 3 / 14 / 4 / 17;
 }
 
-#kanto-route-10-area {
+#kanto-route-10 {
     grid-area: 3 / 17 / 6 / 17;
     display: grid;
     grid-template-columns: 32.8% 42.9% 24.3%;
     grid-template-rows: 8.7% 14.3% 18% 14.3% 44.7%;
 }
 
-#kanto-route-11-area {
+#kanto-route-11 {
     grid-area: 9 / 14 / 10 / 17;
     display: grid;
     grid-template-columns: 10.7% 17.5% 71.8%;
     grid-template-rows: 21.4% 55.4% 23.2%;
 }
 
-#kanto-route-12-area {
+#kanto-route-12 {
     grid-area: 7 / 17 / 12 / 17;
 }
 
-#kanto-route-13-area {
+#kanto-route-13 {
     grid-area: 11 / 15 / 12 / 17;
 }
 
-#kanto-route-14-area {
+#kanto-route-14 {
     grid-area: 11 / 14 / 13 / 15;
 }
 
-#kanto-route-15-area {
+#kanto-route-15 {
     grid-area: 12 / 12 / 13 /14;
 }
 
-#kanto-route-16-area {
+#kanto-route-16 {
     grid-area: 6 / 6 / 7 / 10;
 }
 
-#kanto-route-17-area {
+#kanto-route-17 {
     grid-area: 7 / 6 / 12 / 7;
 }
 
-#kanto-route-18-area {
+#kanto-route-18 {
     grid-area: 12 / 6 / 13 / 11;
 }
 
-#kanto-sea-route-19-area {
+#kanto-sea-route-19 {
     grid-area: 13 / 11 / 15 / 12;
 }
 
-#kanto-sea-route-20-area {
+#kanto-sea-route-20 {
     grid-area: 14 / 4 / 14 / 11;
     display: grid;
     grid-template-columns: 46.8% 6.2% 47%;
     grid-template-rows: 25% 44.6% 30.4%;
 }
 
-#kanto-sea-route-21-area {
+#kanto-sea-route-21 {
     grid-area: 12 / 3 / 14 / 4;
 }
 
-#kanto-route-22-area {
+#kanto-route-22 {
     grid-area: 8 / 1 / 9 / 3;
 }
 
-#kanto-route-23-area {
+#kanto-route-23 {
     grid-area: 4 / 1 / 8 / 2;
     display: grid;
     grid-template-columns: 32% 32.5% 35.5%;
     grid-template-rows: 7.5% 11% 81.5%;
 }
 
-#kanto-route-24-area {
+#kanto-route-24 {
     grid-area: 1 / 13 / 3;
 }
 
-#kanto-route-25-area {
+#kanto-route-25 {
     grid-area: 1 / 14 / 2 / 16;
 }
 
@@ -216,6 +216,6 @@
     grid-area: 6 / 13;
 }
 
-#kanto-victory-road-1 {
+#kanto-victory-road-2 {
     grid-area: 2 / 2;
 }

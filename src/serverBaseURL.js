@@ -1,0 +1,1 @@
+export const serverBaseURL = `https://pokedex-timraketa-nodejs.herokuapp.com`

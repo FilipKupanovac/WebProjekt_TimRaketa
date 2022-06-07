@@ -1,5 +1,7 @@
 //register new user, username, email and password required
 import React, { Component } from 'react'
+import { serverBaseURL } from '../serverBaseURL'
+
 //Components
 
 //CSS
@@ -25,12 +27,6 @@ class Register extends Component {
                     ></input>
                 </div>
                 <div className="flexi form-w space-between">
-                    <p>Username</p>
-                    <input type="text" placeholder="enter your username"
-                        onChange={(event) => { this.onInputChange(`username`, event) }}
-                    ></input>
-                </div>
-                <div className="flexi form-w space-between">
                     <p>Password</p>
                     <input type="password" placeholder="enter your password"
                         onChange={(event) => { this.onInputChange(`password`, event) }}
@@ -49,16 +45,34 @@ class Register extends Component {
     }
 
     tryRegister = () => {
-        //for mock register only requirements are username length > 5 and password = `pokedex`
-        let { email, username, password } = this.state;
-        if (email !== '' && username.length > 5 && password === 'pokedex') {
-            this.props.loginUser(username);
-            this.props.changeCurrentTab('pokedex')
-        }
+        let { email, password } = this.state;
+        console.log(email);
+        fetch(`${serverBaseURL}/register/${email}/${password}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ a: 7, str: 'Some string: &=&' })
+        }).then(res => res.json())
+            .then(res => {
+                if (res.name === "FirebaseError") {
+                    alert(res.code)
+                } else {
+                    try {
+                        console.log(res);
+                        this.props.loginUser(res.email)
+                        this.props.changeCurrentTab("pokedex")
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+
+                }
+            });
     }
 
     onInputChange = (key, event) => {
-        console.log(`SET ${key} as: ${event.target.value}`)
         this.setState({ [key]: event.target.value })
     }
 }

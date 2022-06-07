@@ -1,27 +1,55 @@
 import fetch from 'node-fetch';
 
-export function pokdex(){
+export const Pokedex = () =>{
 
     function getAllPokemon(){
-        /* let pokedex = {
-            results : []
-        };
-        fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
-            .then(resp =>
-                resp.json()
+        return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`).then(
+            async (response) => {
+                let data = await response.json()
+                return data
+            }
+        )
+    }
+
+    function getPokemonEncounterAreas(id){
+        return fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`).then(res => res.json())
+        .then(res => {
+            let fireredEncounterAreas = res.filter(location => {
+                let isFirered = false;
+                location.version_details.forEach(
+                    version => {
+                        if (version.version.name === 'firered')
+                            isFirered = true;
+                    }
+                )
+                if(isFirered)
+                    return true
+            });
+            return fireredEncounterAreas
+        })
+        .then(fireredEncounterAreas => {
+            let locationAreaURLs = extractLocationAreaURLs(fireredEncounterAreas)
+
+            const promises = Promise.all(
+                locationAreaURLs.map(
+                    url => fetch(url).then(res => res.json())
+                )
             )
-            .then(resp => {
-                console.log(resp)
-                return resp
-            })
-        while(pokedex.results.length !== 151){
-            
-        }
-        return pokedex; */
-        return "Getting all pokemon"
+            return promises
+        })
+    }
+
+    function parseLocationNames(locationAreasArray){
+        return locationAreasArray.map(location_area => location_area.location.name)
+    }
+
+    function extractLocationAreaURLs(fireredEncounterAreas){
+        return fireredEncounterAreas.map(area => area.location_area.url)
     }
 
     return{
-        getAllPokemon
+        getAllPokemon,
+        getPokemonEncounterAreas,
+        parseLocationNames
     }
 }

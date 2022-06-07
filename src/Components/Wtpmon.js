@@ -4,14 +4,12 @@ import React, { Component } from 'react';
 //CSS
 import '../CSS/Wtpmon.css'
 
-
 /**
  * Idea:
  * *Multiple input guesses
  * *For each wrong input show that guess in paragraphs .guess
  * *On button click check if name is correct
  * *If there are 5 wrong guesses, player loses game
- * 
  * 
  * *WILD IDEA: find some confetti burst animation and add it on correct guess
  */
@@ -36,7 +34,6 @@ class WTPmon extends Component {
             .then(resp => resp.json())
             .then(resp => {
                 //eslint-disable-next-line
-                console.log(resp);
                 this.setState({
                     currentPokemon: resp,
                     guesses: [],
@@ -66,7 +63,7 @@ class WTPmon extends Component {
                     <h1>WHO'S THAT POKEMON?</h1>
                     {correctGuess ? <div className="animate three">
                         <span>C</span><span>o</span><span>n</span><span>g</span><span>r</span><span>a</span><span>t</span><span>u</span><span>l</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span><span>!</span>
-                    </div> : guesses.length === 5 ? <p>Better luck next time!</p> : <></>}
+                    </div> : guesses.length === 5 ? <p>Better luck next time!</p> : <div id="congrats-container"></div>}
                     {
                         currentPokemon !== undefined
                             ? <img

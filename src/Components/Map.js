@@ -1,11 +1,10 @@
-//image of map, on hover show info about hovered part of map
 //info content: area name, area contents-gyms,markets,etc.
-
 //MISC
 import React, { Component } from 'react'
-import { kantoAreas } from '../kantoAreaNames'
 //Components
+import { kantoAreas } from '../kantoAreaNames'
 import MapArea from './MapArea'
+import { serverBaseURL } from '../serverBaseURL'
 //CSS
 import '../CSS/Map.css'
 import '../CSS/kanto_grid_areas.css'
@@ -49,7 +48,7 @@ class Map extends Component {
                     </div>
                 </div>
                 {
-                    pokemon_encounters.map((pokemon,i) => {
+                    pokemon_encounters.map((pokemon, i) => {
                         return <p key={i}>{pokemon}</p>
                     })
                 }
@@ -63,29 +62,16 @@ class Map extends Component {
     }
 
     getAreaInfo = (area) => {
-        let {selectedArea} = this.state
-        //FOR API CALL ON BACKEND USE SELECTEDAREA FROM STATE BECAUSE IT ACCEPTS ONLY THE AREA THAT IS HOVERED OVER
-        /* console.log(selectedArea) 
-        console.log("CLICKED AREA");
-        console.log(area) */
-        fetch(`https://pokeapi.co/api/v2/location-area/${area.name}/`)
-            .then(Response => Response.json())
-            .then(res => {
-                let encounters = res.pokemon_encounters;
-                let fireredPokemon = encounters.filter(encounter =>{
-                    let isFirered = false;
-                    encounter.version_details.forEach(version =>{
-                        if(version.version.name === 'firered'){
-                            isFirered=true;
-                        }
-                    })
-                    return isFirered
-                })
-                let names = fireredPokemon.map(element => {
-                    return element.pokemon.name
-                })
-                this.setState({pokemon_encounters : names});
-            })
+        let { selectedArea } = this.state
+        //Safety rename to avoid api call fail for 2nd occurence of same location
+        let name = area.name === 'digletts-cave-2' ? 'digletts-cave' : area.name
+        if (area.location === selectedArea) {
+            fetch(`${serverBaseURL}/map-area/${name}`)
+                .then(
+                    res => res.json()
+                )
+                .then(res => this.setState({ pokemon_encounters: res }))
+        }
     }
 }
 

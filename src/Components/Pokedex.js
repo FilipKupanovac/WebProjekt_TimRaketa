@@ -1,24 +1,20 @@
-//top: filter, searchbar, 
-//result: pokemon image, name, evoution tree, possible encounter area, height, weight
-
 //MISC
 import React, { Component } from 'react'
-
-//IF YOU DO NOT USE 'EXPORT DEFAULT' AT ORIGIN FILE, YOU MUST WRAP CONST INSIDE CURLY BRACKETS
-//import { mockPokedex } from '../mockPokedex'
 //Components
 import CardList from './CardList'
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
+import DetailsCard from './DetailsCard';
+import { serverBaseURL } from '../serverBaseURL';
 //CSS
 import '../CSS/Pokedex.css'
-import DetailsCard from './DetailsCard';
 
 class Pokedex extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       pokedex: [],
+      favorites: [],
       haveRendered: false,
       searchfield: "",
       pickedId: undefined,
@@ -26,16 +22,33 @@ class Pokedex extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151`)
+    fetch(`${serverBaseURL}/pokedex/`)
       .then((resp) => resp.json())
       .then((resp) => {
-        this.setState({ pokedex: resp.results });
+        this.setState({ pokedex: resp });
       });
+
+    fetch(`${serverBaseURL}/get-favorites/${this.props.username}`)
+      .then((resp) =>
+        resp.json()
+      )
+      .then((resp) => {
+        console.log(resp);
+        let tempArray = this.handleFavoritesResponse(resp.favorites)
+        this.setState({ favorites: tempArray });
+      });
+  }
+
+  updateFavorites = (newFavorites) => {
+    this.setState({favorites: newFavorites})
+  }
+
+  handleFavoritesResponse = (responseString) => {
+    return responseString.split(",")
   }
 
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value });
-    console.log(event.target.value);
   };
 
   filterPokemons = () => {
@@ -51,7 +64,8 @@ class Pokedex extends Component {
   };
 
   render() {
-    var { pickedId, pokedex } = this.state;
+    let { pickedId, pokedex, favorites } = this.state;
+    let { signedIn } = this.props;
     return (
       <div className="tc">
         <h1 className="f1">Pokémon</h1>
@@ -69,8 +83,10 @@ class Pokedex extends Component {
             key={pickedId}
             id={pickedId}
             pokemon={pokedex[pickedId - 1]}
-            //TO BE CHANGED ON DB IMPLEMENTATION
-            isFavorite={false}
+            signedIn={signedIn}
+            username={this.props.username}
+            isFavorite={favorites?.includes(pickedId) ? true : false}
+            updateFavorites={this.updateFavorites}
           />
         ) : (
           <></>

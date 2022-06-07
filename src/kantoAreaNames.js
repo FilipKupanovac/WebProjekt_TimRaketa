@@ -1,15 +1,15 @@
 export const kantoAreas = {
     "areas": [
         {
-            "name": "kanto-route-1-area",
+            "name": "kanto-route-1",
             "location": "Route 1"
         },
         {
-            "name": "kanto-route-2-north-towards-pewter-city",
+            "name": "kanto-route-2",
             "location": "Route 2",
             "subareas":[
                 {
-                    "name":"digletts-cave-2",//PRIPAZITI KOD API CALLA, treba maknuti -2
+                    "name":"digletts-cave-2",
                     "location": "Digglet's cave",
                 },
                 {
@@ -19,11 +19,11 @@ export const kantoAreas = {
         ]
         },
         {
-            "name": "kanto-route-3-area",
+            "name": "kanto-route-3",
             "location": "Route 3",
         },
         {
-            "name": "kanto-route-4-area",
+            "name": "kanto-route-4",
             "location": "Route 4",
             "subareas":[{
                 "name":"mt-moon",
@@ -31,27 +31,27 @@ export const kantoAreas = {
             }]
         },
         {
-            "name": "kanto-route-5-area",
+            "name": "kanto-route-5",
             "location": "Route 5",
         },
         {
-            "name": "kanto-route-6-area",
+            "name": "kanto-route-6",
             "location": "Route 6"
         },
         {
-            "name": "kanto-route-7-area",
+            "name": "kanto-route-7",
             "location": "Route 7",
         },
         {
-            "name": "kanto-route-8-area",
+            "name": "kanto-route-8",
             "location": "Route 8",
         },
         {
-            "name": "kanto-route-9-area",
+            "name": "kanto-route-9",
             "location": "Route 9",
         },
         {
-            "name": "kanto-route-10-area",
+            "name": "kanto-route-10",
             "location": "Route 10",
             "subareas":[
                 {
@@ -65,7 +65,7 @@ export const kantoAreas = {
         ]
         },
         {
-            "name": "kanto-route-11-area",
+            "name": "kanto-route-11",
             "location": "Route 11",
             "subareas":[{
                 "name":"digletts-cave",
@@ -73,39 +73,39 @@ export const kantoAreas = {
             }]
         },
         {
-            "name": "kanto-route-12-area",
+            "name": "kanto-route-12",
             "location": "Route 12",
         },
         {
-            "name": "kanto-route-13-area",
+            "name": "kanto-route-13",
             "location": "Route 13",
         },
         {
-            "name": "kanto-route-14-area",
+            "name": "kanto-route-14",
             "location": "Route 14",
         },
         {
-            "name": "kanto-route-15-area",
+            "name": "kanto-route-15",
             "location": "Route 15",
         },
         {
-            "name": "kanto-route-16-area",
+            "name": "kanto-route-16",
             "location": "Route 16",
         },
         {
-            "name": "kanto-route-17-area",
+            "name": "kanto-route-17",
             "location": "Route 17",
         },
         {
-            "name": "kanto-route-18-area",
+            "name": "kanto-route-18",
             "location": "Route 18",
         },
         {
-            "name": "kanto-sea-route-19-area",
+            "name": "kanto-sea-route-19",
             "location": "Route 19",
         },
         {
-            "name": "kanto-sea-route-20-area",
+            "name": "kanto-sea-route-20",
             "location": "Route 20",
             "subareas":[{
                 "name":"seafoam-islands",
@@ -113,27 +113,27 @@ export const kantoAreas = {
             }]
         },
         {
-            "name": "kanto-sea-route-21-area",
+            "name": "kanto-sea-route-21",
             "location": "Route 21",
         },
         {
-            "name": "kanto-route-22-area",
+            "name": "kanto-route-22",
             "location": "Route 22",
         },
         {
-            "name": "kanto-route-23-area",
+            "name": "kanto-route-23",
             "location": "Route 23",
             "subareas": [{
-                "name": "kanto-victory-road-1",
+                "name": "kanto-victory-road-2",
                 "location": "Victory Road",
             }]
         },
         {
-            "name": "kanto-route-24-area",
+            "name": "kanto-route-24",
             "location": "Route 24",
         },
         {
-            "name": "kanto-route-25-area",
+            "name": "kanto-route-25",
             "location": "Route 25",
         },
         {

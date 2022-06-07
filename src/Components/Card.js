@@ -5,12 +5,6 @@ import React, { Component } from 'react'
 //CSS
 import '../CSS/Card.css'
 
-/** TODO
- * 
- * ADD STYLING TO THE CARD IN CARD.CSS FILE
- * 
- * ASSIGN TYPES ACCORDINGLY AT TOP RIGHT CORNER
- */
 
 class Card extends Component {
 

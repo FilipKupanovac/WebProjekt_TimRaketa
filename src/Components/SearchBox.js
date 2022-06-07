@@ -1,3 +1,4 @@
+//MISC
 import React from 'react';
 
 const SearchBox = ({ searchChange }) => {
