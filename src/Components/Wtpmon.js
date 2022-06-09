@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 //CSS
 import '../CSS/Wtpmon.css'
 //IMGs
-import pokeball_open from '../pictures/pokeball-open.png'
-import pokeball_closed from '../pictures/pokeball-closed.png'
+import pokeball_open from '../../public/pictures/pokeball-open.png'
+import pokeball_closed from './../public/pictures/pokeball-closed.png'
 
 class WTPmon extends Component {
     constructor() {
