@@ -87,6 +87,7 @@ class WTPmon extends Component {
                   id="pokemonImage"
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`}
                   alt="nema sliku"
+                  onDragStart={ (e) => e.preventDefault() }
                 />
               ) : (
                 <></>
