@@ -64,20 +64,3 @@ class App extends Component {
 }
 
 export default App;
-
-/**
- * KAKO JE KREŠO REKAO DA MORAMO NEKE REFERENCE I TO ŠTO SMO TRAŽILI NA INTERNETU
- * PRILOŽITI KAO RJEŠENJE, TU PIŠI ŠTA SI TRAŽIO PO NETU TIPA STACK OVERFLOW I
- * TAKVE STRANICE KAKO BI IMALI NA JEDNOM MJESTU SVE
- * 
- * "export default was not found"
- * "react lifecycle hooks"
- * "js map array elements"
- * "use children as props react"
- * https://stackoverflow.com/questions/51282464/using-a-dynamic-key-to-setstate-in-react
- * https://stackoverflow.com/questions/44596025/unexpected-use-of-event-no-restricted-globals-when-using-event-target-id-to-ge
- * https://reactjs.org/docs/handling-events.html
- * https://css-tricks.com/almanac/properties/a/aspect-ratio/
- * https://css-tricks.com/snippets/css/complete-guide-grid/
- * 
- */
