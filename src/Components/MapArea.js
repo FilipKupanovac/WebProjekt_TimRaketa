@@ -1,8 +1,5 @@
 //Misc
 import React from 'react';
-//Components
-
-//CSS
 
 const MapArea = ({ i, area, setLocationOnHover, getAreaInfo }) => {
     //this notation for area["subareas"] checks if there is key "subareas" in area (line 24)

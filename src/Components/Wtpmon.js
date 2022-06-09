@@ -3,19 +3,10 @@ import React, { Component } from 'react';
 //COMPONENTS
 //CSS
 import '../CSS/Wtpmon.css'
-
+//IMGs
 import pokeball_open from '../pictures/pokeball-open.png'
 import pokeball_closed from '../pictures/pokeball-closed.png'
 
-/**
- * Idea:
- * *Multiple input guesses
- * *For each wrong input show that guess in paragraphs .guess
- * *On button click check if name is correct
- * *If there are 5 wrong guesses, player loses game
- * 
- * *WILD IDEA: find some confetti burst animation and add it on correct guess
- */
 class WTPmon extends Component {
     constructor() {
         super();
@@ -113,7 +104,6 @@ class WTPmon extends Component {
                     </p>
                   </>
                 ) : (
-                  //<p>First letter: {currentPokemon.name.toUpperCase().at(0)}</p>
                   <button
                     className="no-underline  bg-animate hover-bg-green inline-flex items-center ma2 tc br2 pa2"
                     onClick={this.showFirstLetter}

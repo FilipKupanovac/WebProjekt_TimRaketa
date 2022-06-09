@@ -1,6 +1,4 @@
-//Misc
 import React from 'react';
-//Components
 //CSS
 import '../CSS/Scroll.css'
 

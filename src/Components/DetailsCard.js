@@ -164,8 +164,6 @@ class DetailsCard extends Component {
         res => res.json()
       )
       .then(res => {
-        console.log(this.props.username);
-        // console.log(res);
         let newArray = []
         if (res.length !== 0) {
 
@@ -223,9 +221,7 @@ class DetailsCard extends Component {
           body: JSON.stringify({ a: 7, str: 'Some string: &=&' })
         })
         this.props.updateFavorites(newArray)
-
       })
-    // this.setState({ isFavorite: isFavorite ? false : true })
   }
 
   handleFavoritesResponse = (responseString) => {
@@ -299,7 +295,6 @@ class DetailsCard extends Component {
       case "dark":
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Pok%C3%A9mon_Dark_Type_Icon.svg/1920px-Pok%C3%A9mon_Dark_Type_Icon.svg.png"
       default:
-      // code block
     }
   }
 }

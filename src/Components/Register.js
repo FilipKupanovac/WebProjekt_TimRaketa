@@ -1,10 +1,5 @@
-//register new user, username, email and password required
 import React, { Component } from 'react'
 import { serverBaseURL } from '../serverBaseURL'
-
-//Components
-
-//CSS
 
 class Register extends Component {
     constructor() {

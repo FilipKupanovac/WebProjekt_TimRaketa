@@ -1,10 +1,5 @@
-//sign in, (username || email) && password
 import React, { Component } from 'react'
 import { serverBaseURL } from '../serverBaseURL'
-
-//Components
-
-//CSS
 
 class Signin extends Component {
     constructor() {

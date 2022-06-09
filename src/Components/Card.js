@@ -17,31 +17,6 @@ class Card extends Component {
     }
   }
 
-  componentDidMount() {
-    //TO FETCH POKEMON'S ENCOUNTER AREAS, USE THIS CHUNK OF CODE
-    //idea: use expanded view when pokemon is clicked to show detailed info about it
-    var { areas, id, pokemon } = this.state
-    this.setState({ id: this.extractNumberFromPokemon(pokemon) })
-
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/encounters`)
-      .then(resp => resp.json())
-      .then(resp => {
-        //eslint-disable-next-line
-        areas = resp.filter(area => {
-          var foundEncounterArea = false;
-          area.version_details.forEach(element => {
-            if (element.version.name === 'firered')
-              foundEncounterArea = true;
-          });
-          if (foundEncounterArea === true) {
-            return area;
-          }
-
-        })
-        this.setState({ areas: areas })
-      })
-  }
-
   render() {
     var { pokemon, id } = this.state;
     return (

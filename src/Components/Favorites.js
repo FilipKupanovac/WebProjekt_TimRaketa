@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 //COMPONENTS
 import CardList from './CardList';
 import { serverBaseURL } from '../serverBaseURL'

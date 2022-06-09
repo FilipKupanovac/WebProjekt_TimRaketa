@@ -1,4 +1,3 @@
-//info content: area name, area contents-gyms,markets,etc.
 //MISC
 import React, { Component } from 'react'
 //Components

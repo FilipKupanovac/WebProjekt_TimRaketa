@@ -12,17 +12,6 @@ import Favorites from './Favorites';
 //CSS
 import '../CSS/App.css';
 
-/*TODO
- *class has to remember user data- login status (logged in or not)-additional renderings according to login status
- * signinClick MUST be changed in a way:
- *  -click opens new View, just as click on pokedex, map or 'WTPmon?'
- *  -after filling form correctly for signin/register to change signedIn status and return user to the homepage, 'Pokedex'
- * Pokemon-wordle-guess pokemon by type with silhouette provided, like footdle.com for soccer players
- *
- * ADVANCED : after clicking log out, state isn't changing, make special function to both change state of signed in and current tab
- * 
- */
-
 class App extends Component {
   constructor() {
     super();
@@ -33,7 +22,6 @@ class App extends Component {
     }
   }
 
-  //METHODS LIKE THIS ONE CAN NOT CHANGE STATE OF COMPONENT FOR SAFETY REASONS BECAUSE THEY ARE RUN INSIDE RENDER METHOD -> WOULD LEAD TO AN INFINITE LOOP - react throws error itself, this is just a notice
   displayCurrentTab = () => {
     let { currentTab, username, signedIn } = this.state;
     switch (currentTab) {
@@ -48,8 +36,6 @@ class App extends Component {
     }
   }
 
-  //OBAVEZNO OVAKVA DEFINICIJA VLASTITE FUNKCIJE KAKO BI RADILO
-  //PRIPAZI KOD SETSTATE METODE, ima 2 para zagrada, ( { key : value } )
   changeCurrentTab = (newTab) => {
     this.setState({ currentTab: newTab })
   }
@@ -57,7 +43,6 @@ class App extends Component {
     this.setState({ username: _username, signedIn: true })
   }
   logout = () => {
-    //MAYBE ADD PROMPT WITH ADDITIONAL CONFIRM BOX
     this.setState({ username: undefined, signedIn: false, currentTab: 'pokedex' })
   }
 
