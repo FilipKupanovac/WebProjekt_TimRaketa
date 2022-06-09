@@ -13,12 +13,13 @@ class Map extends Component {
         super();
         this.state = {
             selectedArea: undefined,
+            clickedArea: undefined,
             pokemon_encounters: []
         }
     }
 
     render() {
-        let { selectedArea, pokemon_encounters } = this.state;
+        let { selectedArea, pokemon_encounters, clickedArea } = this.state;
         return (
             <>
                 {selectedArea === undefined
@@ -47,8 +48,14 @@ class Map extends Component {
                     </div>
                 </div>
                 {
+                    clickedArea !== undefined 
+                    ? 
+                        <h2>At {clickedArea} you can encounter next Pokémon:</h2>
+                    : <></>
+                }
+                {
                     pokemon_encounters.map((pokemon, i) => {
-                        return <p key={i}>{pokemon}</p>
+                        return <p className="location-pokemon-list" key={i}>{this.capitalizeFirstLetter(pokemon)}</p>
                     })
                 }
                 <hr />
@@ -62,6 +69,7 @@ class Map extends Component {
 
     getAreaInfo = (area) => {
         let { selectedArea } = this.state
+        this.setState({clickedArea:selectedArea})
         //Safety rename to avoid api call fail for 2nd occurence of same location
         let name = area.name === 'digletts-cave-2' ? 'digletts-cave' : area.name
         if (area.location === selectedArea) {
@@ -72,6 +80,10 @@ class Map extends Component {
                 .then(res => this.setState({ pokemon_encounters: res }))
         }
     }
+
+    capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+      }
 }
 
 export default Map

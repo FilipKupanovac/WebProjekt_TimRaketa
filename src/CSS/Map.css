@@ -54,3 +54,9 @@
     background: rgba(0, 0, 0, 1);
     border-radius: 25%;
 }
+
+.location-pokemon-list{
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+}
