@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 //CSS
 import '../CSS/Wtpmon.css'
 
+import pokeball_open from '../pictures/pokeball-open.png'
+import pokeball_closed from '../pictures/pokeball-closed.png'
+
 /**
  * Idea:
  * *Multiple input guesses
@@ -58,56 +61,188 @@ class WTPmon extends Component {
         } = this.state;
 
         return (
-            <>
-                <div className='tc fireworks-container'>
-                    <h1>WHO'S THAT POKEMON?</h1>
-                    {correctGuess ? <div className="animate three">
-                        <span>C</span><span>o</span><span>n</span><span>g</span><span>r</span><span>a</span><span>t</span><span>u</span><span>l</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span><span>!</span>
-                    </div> : guesses.length === 5 ? <p>Better luck next time!</p> : <div id="congrats-container"></div>}
-                    {
-                        currentPokemon !== undefined
-                            ? <img
-                                className={correctGuess ? "wtpmon" : "wtpmon pokemon-image-black"}
-                                id="pokemonImage"
-                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`}
-                                alt="nema sliku" />
-                            : <></>
-                    }
-                    <div>
-                        {
-                            firstLetterRevealed ? <p>First letter: {currentPokemon.name.toUpperCase().at(0)}</p> : <button className='no-underline  bg-animate hover-bg-green inline-flex items-center ma2 tc br2 pa2' onClick={this.showFirstLetter} >Show first letter</button>
-                        }
-                    </div>
-
-                    <div>
-                        {
-                            lettersNumberRevealed ? <p>Letters number: {currentPokemon.name.length}</p> : <button className='no-underline  bg-animate hover-bg-green inline-flex items-center ma2 tc br2 pa2' onClick={this.showLettersNumber} >Show letters number</button>
-                        }
-                    </div>
-
-                    <div>{
-                        currentPokemon !== undefined
-                            ? <div>
-                                <p className={guesses.at(0) === undefined ? "guess" : guesses.at(0) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(0)}</p>
-                                <p className={guesses.at(1) === undefined ? "guess" : guesses.at(1) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(1)}</p>
-                                <p className={guesses.at(2) === undefined ? "guess" : guesses.at(2) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(2)}</p>
-                                <p className={guesses.at(3) === undefined ? "guess" : guesses.at(3) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(3)}</p>
-                                <p className={guesses.at(4) === undefined ? "guess" : guesses.at(4) === this.capitalizeFirstLetter(currentPokemon.name) ? "guess-correct" : "guess-incorrect"}>{guesses.at(4)}</p>
-                            </div>
-                            : <></>}
-                    </div>
-
-                    <form
-                        onSubmit={this.handleSubmit} id="inputForm"
-                        autoComplete='off'>
-                        <input type="text" id="guess" placeholder="Guess" />
-                    </form>
-
-                    {correctGuess || guesses.length > 4 ? <button className='no-underline near-white bg-animate bg-near-black hover-bg-gray inline-flex items-center ma2 tc br2 pa2' onClick={this.startNewGame} >Start new game?</button> : <></>}
+          <>
+            <div className="tc fireworks-container">
+              <h1>WHO'S THAT POKEMON?</h1>
+              {correctGuess ? (
+                <div className="animate three">
+                  <span>C</span>
+                  <span>o</span>
+                  <span>n</span>
+                  <span>g</span>
+                  <span>r</span>
+                  <span>a</span>
+                  <span>t</span>
+                  <span>u</span>
+                  <span>l</span>
+                  <span>a</span>
+                  <span>t</span>
+                  <span>i</span>
+                  <span>o</span>
+                  <span>n</span>
+                  <span>s</span>
+                  <span>!</span>
                 </div>
+              ) : guesses.length === 5 ? (
+                <p>Better luck next time!</p>
+              ) : (
+                <div id="congrats-container"></div>
+              )}
+              {currentPokemon !== undefined ? (
+                <img
+                  className={
+                    correctGuess ? "wtpmon" : "wtpmon pokemon-image-black"
+                  }
+                  id="pokemonImage"
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${currentPokemon.id}.png`}
+                  alt="nema sliku"
+                />
+              ) : (
+                <></>
+              )}
+              <div className="flexi wtpmon-helper">
+                {firstLetterRevealed ? (
+                  <>
+                    <img
+                      className="wtpmon-joker"
+                      src={`${pokeball_open}`}
+                      alt="pokeball-open"
+                    ></img>
+                    <p>
+                      First letter: {currentPokemon.name.toUpperCase().at(0)}
+                    </p>
+                  </>
+                ) : (
+                  //<p>First letter: {currentPokemon.name.toUpperCase().at(0)}</p>
+                  <button
+                    className="no-underline  bg-animate hover-bg-green inline-flex items-center ma2 tc br2 pa2"
+                    onClick={this.showFirstLetter}
+                  >
+                    <img
+                      className="wtpmon-joker"
+                      src={`${pokeball_closed}`}
+                      alt="pokeball-closed"
+                    ></img>
+                    Show first letter
+                  </button>
+                )}
+              </div>
 
-            </>
-        )
+              <div className="flexi wtpmon-helper">
+                {lettersNumberRevealed ? (
+                  <>
+                    <img
+                      className="wtpmon-joker"
+                      src={`${pokeball_open}`}
+                      alt="pokeball-open"
+                    ></img>
+                    <p>Letters number: {currentPokemon.name.length}</p>
+                  </>
+                ) : (
+                  <button
+                    className="no-underline  bg-animate hover-bg-green inline-flex items-center ma2 tc br2 pa2"
+                    onClick={this.showLettersNumber}
+                  >
+                    <img
+                      className="wtpmon-joker"
+                      src={`${pokeball_closed}`}
+                      alt="pokeball-closed"
+                    ></img>
+                    Show letters number
+                  </button>
+                )}
+              </div>
+
+              <div>
+                {currentPokemon !== undefined ? (
+                  <div>
+                    <p
+                      className={
+                        guesses.at(0) === undefined
+                          ? "guess"
+                          : guesses.at(0) ===
+                            this.capitalizeFirstLetter(currentPokemon.name)
+                          ? "guess-correct"
+                          : "guess-incorrect"
+                      }
+                    >
+                      {guesses.at(0)}
+                    </p>
+                    <p
+                      className={
+                        guesses.at(1) === undefined
+                          ? "guess"
+                          : guesses.at(1) ===
+                            this.capitalizeFirstLetter(currentPokemon.name)
+                          ? "guess-correct"
+                          : "guess-incorrect"
+                      }
+                    >
+                      {guesses.at(1)}
+                    </p>
+                    <p
+                      className={
+                        guesses.at(2) === undefined
+                          ? "guess"
+                          : guesses.at(2) ===
+                            this.capitalizeFirstLetter(currentPokemon.name)
+                          ? "guess-correct"
+                          : "guess-incorrect"
+                      }
+                    >
+                      {guesses.at(2)}
+                    </p>
+                    <p
+                      className={
+                        guesses.at(3) === undefined
+                          ? "guess"
+                          : guesses.at(3) ===
+                            this.capitalizeFirstLetter(currentPokemon.name)
+                          ? "guess-correct"
+                          : "guess-incorrect"
+                      }
+                    >
+                      {guesses.at(3)}
+                    </p>
+                    <p
+                      className={
+                        guesses.at(4) === undefined
+                          ? "guess"
+                          : guesses.at(4) ===
+                            this.capitalizeFirstLetter(currentPokemon.name)
+                          ? "guess-correct"
+                          : "guess-incorrect"
+                      }
+                    >
+                      {guesses.at(4)}
+                    </p>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+
+              <form
+                onSubmit={this.handleSubmit}
+                id="inputForm"
+                autoComplete="off"
+              >
+                <input type="text" id="guess" placeholder="Guess" />
+              </form>
+
+              {correctGuess || guesses.length > 4 ? (
+                <button
+                  className="no-underline near-white bg-animate bg-near-black hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
+                  onClick={this.startNewGame}
+                >
+                  Start new game?
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
+          </>
+        );
     }
 
     handleSubmit = (event) => {
