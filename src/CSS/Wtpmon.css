@@ -356,3 +356,14 @@ a.repeat:hover {
 #congrats-container{
 	height: 60px;
 }
+
+div.wtpmon-helper{
+	width: min(70%, 220px);
+	margin: 0 auto;
+	justify-content: space-around;
+}
+
+.wtpmon-joker{
+	width: 30px;
+	height: 30px;
+}
