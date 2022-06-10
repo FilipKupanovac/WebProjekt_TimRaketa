@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 //COMPONENTS
 //CSS
 import '../CSS/Wtpmon.css'
-//IMGs
-//import pokeball_open from '../pictures/pokeball-open.png'
-//import pokeball_closed from '../pictures/pokeball-closed.png'
+
 
 class WTPmon extends Component {
     constructor() {
