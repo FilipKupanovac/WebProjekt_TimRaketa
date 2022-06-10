@@ -5,10 +5,10 @@
 
 ## Funkcionalni zahtjevi
 * prikaz pokemona kroz pokedex s mogućnošću filtriranja pokemona po imenu i tipu
-* prikaz karte iz videoigara pokemon fire red i leaf green s dodatnim interaktivnim sadržajima
-* mogućnost odabira prikaza za svaku igru zasebno (sidebar mijenja boju ovisno o odabiru igre)
+* prikaz karte iz videoigara pokemon fire red s dodatnim interaktivnim sadržajima
 * prikaz detalja o odabranom pokemonu 
 * mogućnost odabira nasumičnog pokemona s prikazom evolucijske linije
+* igra Who's that Pokémon?
 * registracija/prijava korisnika
 * označavanje pokemona kao favorita
 

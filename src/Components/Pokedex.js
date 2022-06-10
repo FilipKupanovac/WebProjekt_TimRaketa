@@ -68,7 +68,7 @@ class Pokedex extends Component {
     let { signedIn } = this.props;
     return (
       <div className="tc">
-        <h1 className="f1">Pokémon</h1>
+        <h1 className="f1">Pokédex</h1>
         <SearchBox searchChange={this.onSearchChange} />
         <Scroll>
           <CardList
