@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 //CSS
 import '../CSS/Wtpmon.css'
 //IMGs
-import pokeball_open from '../pictures/pokeball-open.png'
-import pokeball_closed from '../pictures/pokeball-closed.png'
+//import pokeball_open from '../pictures/pokeball-open.png'
+//import pokeball_closed from '../pictures/pokeball-closed.png'
 
 class WTPmon extends Component {
     constructor() {
@@ -97,7 +97,7 @@ class WTPmon extends Component {
                   <>
                     <img
                       className="wtpmon-joker"
-                      src={`${pokeball_open}`}
+                      src={/* `${pokeball_open}` */`https://i.postimg.cc/D0qgG3Lc/pokeball-open-a6208d5c9297be2e2cbb.png`}
                       alt="pokeball-open"
                     ></img>
                     <p>
@@ -111,7 +111,7 @@ class WTPmon extends Component {
                   >
                     <img
                       className="wtpmon-joker"
-                      src={`${pokeball_closed}`}
+                      src={/* `${pokeball_closed}` */`https://i.postimg.cc/RhrdqZ6F/pokeball-closed-69ed36cb9837ba69d768.png`}
                       alt="pokeball-closed"
                     ></img>
                     Show first letter
@@ -124,7 +124,7 @@ class WTPmon extends Component {
                   <>
                     <img
                       className="wtpmon-joker"
-                      src={`${pokeball_open}`}
+                      src={/* `${pokeball_open}` */`https://i.postimg.cc/D0qgG3Lc/pokeball-open-a6208d5c9297be2e2cbb.png`}
                       alt="pokeball-open"
                     ></img>
                     <p>Letters number: {currentPokemon.name.length}</p>
@@ -136,7 +136,7 @@ class WTPmon extends Component {
                   >
                     <img
                       className="wtpmon-joker"
-                      src={`${pokeball_closed}`}
+                      src={/* `${pokeball_closed}` */`https://i.postimg.cc/RhrdqZ6F/pokeball-closed-69ed36cb9837ba69d768.png`}
                       alt="pokeball-closed"
                     ></img>
                     Show letters number
