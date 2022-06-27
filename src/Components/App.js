@@ -57,7 +57,6 @@ class App extends Component {
           logout={this.logout}
         />
         {this.displayCurrentTab()}
-        <p><a href="https://github.com/FilipKupanovac/WebProjekt_TimRaketa">Work in progress...</a></p>
       </div>
     );
   }
