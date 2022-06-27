@@ -55,7 +55,7 @@ class Map extends Component {
                 }
                 {
                     pokemon_encounters.map((pokemon, i) => {
-                        return <p className="location-pokemon-list" key={i}>{this.capitalizeFirstLetter(pokemon)}</p>
+                        return <p className=" bg-dark-pink br-pill b--solid b--dark-pink grow w-20 location-pokemon-list " key={i}>{this.capitalizeFirstLetter(pokemon)}</p>
                     })
                 }
                 <hr />
